@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPProxy", "UDPProxy\UDPProxy.csproj", "{D485FC42-F918-4858-9CA5-41F6315DD4F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDPProxy", "UDPProxy\UDPProxy.csproj", "{D485FC42-F918-4858-9CA5-41F6315DD4F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightREST", "LightREST\LightREST.csproj", "{DC075A65-DFDD-4683-9969-57513BC56F04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightREST", "LightREST\LightREST.csproj", "{DC075A65-DFDD-4683-9969-57513BC56F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{95A67882-6CF8-4417-BB7B-EB107DDFBF8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{95A67882-6CF8-4417-BB7B-EB107DDFBF8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrugerUnitTest", "BrugerUnitTest\BrugerUnitTest.csproj", "{002E9CDD-E31F-49B4-A883-6928C09D90FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{95A67882-6CF8-4417-BB7B-EB107DDFBF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95A67882-6CF8-4417-BB7B-EB107DDFBF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95A67882-6CF8-4417-BB7B-EB107DDFBF8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{002E9CDD-E31F-49B4-A883-6928C09D90FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002E9CDD-E31F-49B4-A883-6928C09D90FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002E9CDD-E31F-49B4-A883-6928C09D90FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002E9CDD-E31F-49B4-A883-6928C09D90FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
