@@ -25,7 +25,7 @@ namespace LightREST.DBUtil
         /// <summary>
         /// SQL til til at indsætte et Bruger objekt som række i LMSBruger Tabellen i databasen
         /// </summary>
-        private String insertSql = "insert into LMSBruger Values (@Brugernavn @Kodeord)";
+        private String insertSql = "insert into LMSBruger Values (@Brugernavn, @Kodeord)";
 
         /// <summary>
         /// SQL streng til at slette en række fra LMSBruger babellen i databasen ud fra angivet Id
