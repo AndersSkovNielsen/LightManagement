@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ModelLibrary
 {
-    class Bruger
+    public class Bruger
     {
         private int _id;
         private string _brugernavn;
