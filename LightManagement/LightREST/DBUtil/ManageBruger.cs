@@ -73,8 +73,7 @@ namespace LightREST.DBUtil
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(insertSql, connection);
-
-                //Brug af TilføjVærdiOpgave metode (DRY)
+                
                 TilføjVærdiBruger(bruger, command);
 
                 command.Connection.Open();
@@ -86,6 +85,31 @@ namespace LightREST.DBUtil
                     return true;
                 }
                 return false;
+            }
+        }
+
+        public Bruger FjernBruger(int brugerID)
+        {
+            Bruger opgave = HentBrugerFraId(brugerID);
+            if (opgave == null)
+            {
+                return null;
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(deleteSql, connection);
+                command.Parameters.AddWithValue("@Id", brugerID);
+
+                command.Connection.Open();
+
+                int noOfRows = command.ExecuteNonQuery();
+
+                if (noOfRows == 1)
+                {
+                    return opgave;
+                }
+                return null;
             }
         }
 

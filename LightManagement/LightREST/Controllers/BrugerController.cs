@@ -38,14 +38,15 @@ namespace LightREST.Controllers
 
         // PUT: api/Bruger/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Bruger value)
         {
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public Bruger Delete(int id)
         {
+            return manager.FjernBruger(id);
         }
     }
 }
