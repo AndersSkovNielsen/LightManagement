@@ -9,6 +9,9 @@ namespace LightREST.DBUtil
 {
     public class ManageBruger
     {
+        private string connectionString =
+            @"";
+
         /// <summary>
         /// SQL streng til at hente alle rækker i LMSBruger tabellen fra databasen
         /// </summary>
@@ -41,31 +44,64 @@ namespace LightREST.DBUtil
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    //OBS! Udkommenteret kode nedenfor står som eksempel på brud med DRY-princippet. Se rapport
-
-                    //int id = reader.GetInt32(0);
-                    //String beskrivelse = reader.GetString(1);
-                    //String statusStr = reader.GetString(2);
-                    //StatusType status = (StatusType)Enum.Parse(typeof(StatusType), statusStr);
-                    //checkEnumParse(status,id);
-                    //int ventetid = reader.GetInt32(3);
-
-                    //opgaver.Add(new Opgave(id, beskrivelse, status, ventetid));
-
-                    //Brug af ReadOpgave metode (DRY)
-                    brugere.Add(ReadBrugere(reader));
+                    brugere.Add(ReadBruger(reader));
                 }
             }
             return brugere;
         }
 
-        private Bruger ReadBrugere(SqlDataReader reader)
+        public Bruger HentBrugerFraId(int brugerId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryStringFromID, connection);
+                command.Parameters.AddWithValue("@Id", brugerId);
+
+                command.Connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    return ReadBruger(reader);
+                }
+            }
+            return null;
+        }
+
+        public bool IndsætBruger(Bruger bruger)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(insertSql, connection);
+
+                //Brug af TilføjVærdiOpgave metode (DRY)
+                TilføjVærdiBruger(bruger, command);
+
+                command.Connection.Open();
+
+                int noOfRows = command.ExecuteNonQuery();
+
+                if (noOfRows == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        private Bruger ReadBruger(SqlDataReader reader)
         {
             int id = reader.GetInt32(0);
             String brugernavn = reader.GetString(1);
             String kodeord = reader.GetString(2);
             
             return new Bruger(id, brugernavn, kodeord);
+        }
+
+        private void TilføjVærdiBruger(Bruger bruger, SqlCommand command)
+        {
+            command.Parameters.AddWithValue("@Brugernavn", bruger.Brugernavn);
+            command.Parameters.AddWithValue("@Kodeord", bruger.Kodeord);
         }
     }
 }

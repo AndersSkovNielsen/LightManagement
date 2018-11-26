@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LightREST.DBUtil;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ModelLibrary;
 
 namespace LightREST.Controllers
 {
@@ -11,24 +13,27 @@ namespace LightREST.Controllers
     [ApiController]
     public class BrugerController : ControllerBase
     {
+        ManageBruger manager = new ManageBruger();
+
         // GET: api/Bruger
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Bruger> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return manager.HentAlleBruger();
         }
 
         // GET: api/Bruger/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Bruger Get(int id)
         {
-            return "value";
+            return manager.HentBrugerFraId(id);
         }
 
         // POST: api/Bruger
         [HttpPost]
-        public void Post([FromBody] string value)
+        public bool Post([FromBody] Bruger value)
         {
+            return manager.IndsætBruger(value);
         }
 
         // PUT: api/Bruger/5

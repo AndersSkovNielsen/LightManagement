@@ -8,30 +8,30 @@ namespace ModelLibrary
     {
         private int _id;
         private string _brugernavn;
-        private string _password;
+        private string _kodeord;
 
-        public int ID
+        public int Id
         {
             get { return _id; }
             set { _id = value; }
         }
-        public string BrugerNavn
+        public string Brugernavn
         {
             get { return _brugernavn; }
             set { _brugernavn = value; }
         }
-        public string Password
+        public string Kodeord
         {
-            get { return _password; }
-            set { _password = value; }
+            get { return _kodeord; }
+            set { _kodeord = value; }
         }
         public Bruger()
         { }
-        public Bruger(int id, string brugerNavn, string password)
+        public Bruger(int id, string brugernavn, string kodeord)
         {
             _id = id;
-            _brugernavn = brugerNavn;
-            _password = password;
+            _brugernavn = brugernavn;
+            _kodeord = kodeord;
         }
     }
 }
