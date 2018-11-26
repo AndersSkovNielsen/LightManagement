@@ -68,7 +68,7 @@ namespace LightREST.DBUtil
             return null;
         }
 
-        public bool IndsætBruger(Bruger bruger)
+        public bool TilføjBruger(Bruger bruger)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

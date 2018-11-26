@@ -33,7 +33,7 @@ namespace LightREST.Controllers
         [HttpPost]
         public bool Post([FromBody] Bruger value)
         {
-            return manager.IndsætBruger(value);
+            return manager.TilføjBruger(value);
         }
 
         // PUT: api/Bruger/5
