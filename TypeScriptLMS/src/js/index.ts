@@ -20,35 +20,30 @@ for (let i: number = 0; i < elements.length; i++) {
     });
 }
 
-
-
-
-
-
-//Aktel kode
+//Aktuel kode (forbindelse til Azure)
 
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
-
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
 let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content3");
 let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
 
+axios.get(uri).then(function (response: AxiosResponse): void
+{
+    elementById.innerHTML = JSON.stringify(response.data);
+})
+.catch (function (error : AxiosError): void
+{
+elementById.innerHTML = JSON.stringify(error.message);
+});
 
-axios.get(uri)
-    .then(function (response: AxiosResponse): void {
-        elementById.innerHTML = JSON.stringify(response.data);
-    })
-    .catch(function (error: AxiosError): void {
-        elementById.innerHTML = error.message;
-    });
-
-    axios.get(uri + InputConverter)
-    .then(function (response: AxiosResponse): void {
-        elementById2.innerHTML = JSON.stringify(response.data);
-    })
-    .catch(function (error: AxiosError): void {
-        elementById2.innerHTML = error.message;
-    });
+axios.get(uri+InputConverter).then(function(response:AxiosResponse): void
+{
+    elementById2.innerHTML= JSON.stringify(response.data);
+})
+.catch(function(error:AxiosError): void 
+{
+    elementById2.innerHTML = error.message;
+});
 
 function AxionGetBrugerById(): void
 { 
@@ -63,14 +58,16 @@ function AxionGetBrugerById(): void
   });
 
 }
-//her
-let getIdButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("GetIdButton");
+
+
+let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
 getIdButton.addEventListener("click", AxionGetBrugerById);
+
  //
  //
  //
  //
-//Anders' tilføjelser
+ //Anders' tilføjelser
 
 //Button references
 let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");
@@ -83,7 +80,34 @@ tilføjButton.addEventListener("click", tilføjFunction)
 fjernButton.addEventListener("click", fjernFunction)
 
 //Button void functions
-function tilføjFunction(): void{}
+function tilføjFunction(): void{
+    
+    let tilføjName: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjName");
+    let tilføjKode: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjKode");
 
-function fjernFunction(): void{}
+    let navn: string = String(tilføjName.value);
+    let kode: string = String(tilføjKode.value);
 
+    console.log(navn);
+    console.log(kode);
+
+    axios.post('http://ande-easj-rest.azurewebsites.net/api/bruger/', {
+    Brugernavn: navn,  
+    Kodeord: kode
+  })
+  .then(function(response) {
+    console.log(response.status);
+  });
+}
+
+function fjernFunction(): void{
+
+    let sletBruger: HTMLInputElement = <HTMLInputElement> document.getElementById("SletBruger");
+    let id: number = Number(sletBruger.value);
+
+    axios.delete(uri + id)
+      .then(function(response){
+    console.log(response.data); // ex.: { user: 'Your User'}
+    console.log(response.status); // ex.: 200
+})
+}
