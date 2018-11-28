@@ -48,10 +48,12 @@
 
 
 
-//her er den plz
-function NæsteSideKnap(): void{
+    //her er den plz
+    function NæsteSideKnap(): void
+    {
     console.log("Næste side er kaldt")
     window.location.href = "NySide.htm";
+    }
 
     let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
     getIdButton.addEventListener("click", AxionGetBrugerById);
@@ -75,7 +77,8 @@ function NæsteSideKnap(): void{
         {
         elementById2.innerHTML = error.message;
         });
-    //    }
+    }
+    //}
     
 
 
