@@ -1,3 +1,5 @@
+import axios, { AxiosPromise } from 'axios';
+
 interface Person {
     firstName: string;
     lastName: string;
