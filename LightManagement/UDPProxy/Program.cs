@@ -1,4 +1,5 @@
 ﻿using System;
+using UDPProxy;
 
 namespace UDPProxy
 {
@@ -6,7 +7,8 @@ namespace UDPProxy
     {
         static void Main(string[] args)
         {
-
+            Proxy proxy = new Proxy();
+            proxy.start();
             Console.WriteLine("Hello World!");
         }
     }
