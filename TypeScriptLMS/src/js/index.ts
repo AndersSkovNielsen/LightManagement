@@ -45,7 +45,7 @@ function AxionGetBrugerById(): void
  //
  //
  //
-//Anders' tilføjelser
+ //Anders' tilføjelser
 
 //Button references
 let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");
