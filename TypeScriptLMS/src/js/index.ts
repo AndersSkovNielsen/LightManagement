@@ -1,6 +1,7 @@
 interface Person {
     firstName: string;
     lastName: string;
+    //note her::::
 }
 
 function greeter(person: Person): string {
