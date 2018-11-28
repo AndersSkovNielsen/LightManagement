@@ -31,19 +31,13 @@ axios.get(uri).then(function (response: AxiosResponse): void
 {
     elementById.innerHTML = JSON.stringify(response.data);
 })
-.catch (function (error : AxiosError): void
-{
-elementById.innerHTML = JSON.stringify(error.message);
-});
+
 
 axios.get(uri+InputConverter).then(function(response:AxiosResponse): void
 {
     elementById2.innerHTML= JSON.stringify(response.data);
 })
-.catch(function(error:AxiosError): void 
-{
-    elementById2.innerHTML = error.message;
-});
+
 
 function AxionGetBrugerById(): void
 { 
