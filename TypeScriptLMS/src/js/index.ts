@@ -25,14 +25,9 @@ for (let i: number = 0; i < elements.length; i++) {
 
 
 
-
-
-
-
 //Aktel kode
 
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
-
 
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
 let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content3");
