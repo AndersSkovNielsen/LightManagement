@@ -28,6 +28,13 @@ namespace LightREST.DBUtil
         private String insertSql = "insert into LMSBruger Values (@Brugernavn, @Kodeord)";
 
         /// <summary>
+        /// SQL streng til at opdatere værdierne for en række i LMSBruger Tabellen i Databasen ud fra angivet Id, samt værdier der skal opdateres
+        /// </summary>
+        private String updateSql = "update LMSBruger " +
+                                   "set Brugernavn = @Brugernavn, Kodeord = @Kodeord " +
+                                   "where Id = @Id";
+
+        /// <summary>
         /// SQL streng til at slette en række fra LMSBruger babellen i databasen ud fra angivet Id
         /// </summary>
         private String deleteSql = "delete from LMSBruger where Id = @Id";
@@ -75,6 +82,27 @@ namespace LightREST.DBUtil
                 SqlCommand command = new SqlCommand(insertSql, connection);
                 
                 TilføjVærdiBruger(bruger, command);
+
+                command.Connection.Open();
+
+                int noOfRows = command.ExecuteNonQuery();
+
+                if (noOfRows == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool OpdaterBruger(int brugerId, Bruger bruger)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(updateSql, connection);
+                
+                TilføjVærdiBruger(bruger, command);
+                command.Parameters.AddWithValue("@Id", brugerId);
 
                 command.Connection.Open();
 
