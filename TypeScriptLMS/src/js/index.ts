@@ -63,6 +63,7 @@ function AxionGetBrugerById(): void
   });
 
 }
+//her
 let getIdButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("GetIdButton");
 getIdButton.addEventListener("click", AxionGetBrugerById);
  //
