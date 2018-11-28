@@ -52,7 +52,7 @@ function AxionGetBrugerById(): void
   });
 
 }
-
+//her er den plz
 function NæsteSideKnap(): void{
     console.log("Næste side er kaldt")
     window.location.href = "NySide.htm";
