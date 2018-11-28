@@ -26,6 +26,21 @@ namespace UDPProxy
                     HandleOneRequest(receiverSock, remoteEP);
                 }
             }
+            using (UdpClient senderSock = new UdpClient()) // ingen port = lytter IKKE
+            {
+                senderSock.EnableBroadcast = true;
+
+                senderSock.Send(data, data.Length, receiverEP);
+
+                IPEndPoint FromReceiverEP = new IPEndPoint(IPAddress.Any, 0);
+                byte[] inData = senderSock.Receive(ref FromReceiverEP);
+
+                String inStr = Encoding.ASCII.GetString(inData);
+
+                Console.WriteLine("Modtaget = " + inStr);
+
+            }
+
         }
         private static void HandleOneRequest(UdpClient receiverSock, IPEndPoint remoteEP)
         {
@@ -38,5 +53,7 @@ namespace UDPProxy
             byte[] outData = Encoding.ASCII.GetBytes(inStr.ToUpper());
             receiverSock.Send(outData, outData.Length, remoteEP);
         }
+
+
     }
 }

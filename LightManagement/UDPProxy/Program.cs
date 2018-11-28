@@ -9,7 +9,7 @@ namespace UDPProxy
         {
             Proxy proxy = new Proxy();
             proxy.start();
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
