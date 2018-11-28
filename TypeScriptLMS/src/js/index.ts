@@ -66,7 +66,6 @@ getIdButton.addEventListener("click", AxionGetBrugerById);
  //
  //
  //
- //
  //Anders' tilføjelser
 
 //Button references
