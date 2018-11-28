@@ -45,6 +45,10 @@ axios.get(uri+InputConverter).then(function(response:AxiosResponse): void
     elementById2.innerHTML = error.message;
 });
 
+
+let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
+getIdButton.addEventListener("click", AxionGetBrugerById);
+
 function AxionGetBrugerById(): void
 { 
     let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
@@ -60,8 +64,7 @@ function AxionGetBrugerById(): void
 }
 
 
-let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
-getIdButton.addEventListener("click", AxionGetBrugerById);
+
 
  //
  //
