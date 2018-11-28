@@ -5,19 +5,7 @@ import axios, {
 } from "../../node_modules/axios/index";
 
 
-interface Person {
-    firstName: string;
-    lastName: string;
-    //note her::::
-}
 
-function greeter(person: Person): string {
-    return "Hello, " + person.firstName + " " + person.lastName;
-}
-let user: Person = { firstName: "John", lastName: "Doe" };
-
-let element: HTMLDivElement = <HTMLDivElement> document.getElementById("content");
-element.innerHTML = greeter(user);
 
 let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
 // let i: number;
