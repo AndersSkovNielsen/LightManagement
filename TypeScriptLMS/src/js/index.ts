@@ -81,4 +81,14 @@ function tilføjFunction(): void{
   });
 }
 
-function fjernFunction(): void{}
+function fjernFunction(): void{
+
+    let sletBruger: HTMLInputElement = <HTMLInputElement> document.getElementById("SletBruger");
+    let id: number = Number(sletBruger.value);
+
+    axios.delete(uri + id)
+      .then(function(response){
+    console.log(response.data); // ex.: { user: 'Your User'}
+    console.log(response.status); // ex.: 200
+})
+}
