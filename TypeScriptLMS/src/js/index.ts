@@ -36,7 +36,7 @@ for (let i: number = 0; i < elements.length; i++) {
 
 
 
-let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger";
+let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 
 
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
@@ -76,7 +76,7 @@ function AxionGetBid(): void
 function AxionGetBidById(id:number): void
 {
 
-    axios.get('https://ande-easj-rest.azurewebsites.net/api/bruger' + id)
+    axios.get('https://ande-easj-rest.azurewebsites.net/api/bruger/' + id)
     .then(function (response) {
       console.log(response);
     })
