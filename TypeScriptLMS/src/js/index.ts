@@ -53,9 +53,17 @@ function AxionGetBrugerById(): void
 
 }
 
+function NæsteSideKnap(): void{
+    console.log("Næste side er kaldt")
+    window.location.href = "NySide.htm";
+
+}
 
 let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
 getIdButton.addEventListener("click", AxionGetBrugerById);
+
+let NæsteSide:HTMLButtonElement=<HTMLButtonElement> document.getElementById("NæsteSide");
+NæsteSide.addEventListener("click", NæsteSideKnap);
 
  //
  //
