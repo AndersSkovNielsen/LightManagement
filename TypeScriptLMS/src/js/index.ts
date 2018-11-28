@@ -48,7 +48,7 @@ getIdButton.addEventListener("click", AxionGetBrugerById);
  //
  //
  //
-//Anders' tilføjelser
+ //Anders' tilføjelser
 
 //Button references
 let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");
