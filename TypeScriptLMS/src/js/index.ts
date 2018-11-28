@@ -33,18 +33,22 @@ let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("conte
 let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content3");
 let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
 
-function AxionGetBruger(): void
-{
 
-    axios.get('https://ande-easj-rest.azurewebsites.net/api/bruger/')
-    .then(function (response) {
-      console.log(response);
+axios.get(uri)
+    .then(function (response: AxiosResponse): void {
+        elementById.innerHTML = JSON.stringify(response.data);
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function (error: AxiosError): void {
+        elementById.innerHTML = error.message;
     });
 
-}
+    axios.get(uri + InputConverter)
+    .then(function (response: AxiosResponse): void {
+        elementById2.innerHTML = JSON.stringify(response.data);
+    })
+    .catch(function (error: AxiosError): void {
+        elementById2.innerHTML = error.message;
+    });
 
 function AxionGetBrugerById(): void
 { 
@@ -59,8 +63,8 @@ function AxionGetBrugerById(): void
   });
 
 }
-let toOuncesButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("GetIdButton");
-toOuncesButton.addEventListener("click", AxionGetBrugerById);
+let getIdButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("GetIdButton");
+getIdButton.addEventListener("click", AxionGetBrugerById);
  //
  //
  //
