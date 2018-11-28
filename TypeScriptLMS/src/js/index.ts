@@ -68,7 +68,6 @@ NæsteSide.addEventListener("click", NæsteSideKnap);
  //
  //
  //
- //
  //Anders' tilføjelser
 
 //Button references
