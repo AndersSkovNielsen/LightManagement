@@ -20,30 +20,24 @@ for (let i: number = 0; i < elements.length; i++) {
     });
 }
 
-//Aktuel kode (forbindelse til Azure)
+//Aktuel kode (forbindelse til Azure
 
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
-let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
-let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content3");
+let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
+let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
 let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
 
 axios.get(uri).then(function (response: AxiosResponse): void
 {
     elementById.innerHTML = JSON.stringify(response.data);
 })
-.catch (function (error : AxiosError): void
-{
-elementById.innerHTML = JSON.stringify(error.message);
-});
+
 
 axios.get(uri+InputConverter).then(function(response:AxiosResponse): void
 {
     elementById2.innerHTML= JSON.stringify(response.data);
 })
-.catch(function(error:AxiosError): void 
-{
-    elementById2.innerHTML = error.message;
-});
+
 
 function AxionGetBrugerById(): void
 { 
