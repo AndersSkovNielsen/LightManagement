@@ -59,12 +59,12 @@ function NæsteSideKnap(): void{
     function AxionGetBrugerById(): void
     { 
         let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
-        if (InputConverter.value=null)
-        {
-            elementById2.innerHTML = "Please Input ID before pressing the 'Get' button " ;  
-        }
-    else 
-    {
+        //if (InputConverter.value=null)
+        //{
+          //  elementById2.innerHTML = "Please Input ID before pressing the 'Get' button " ;  
+        //}
+    //else 
+        //{
         {
             let id: number = Number(InputConverter.value); 
             axios.get(uri + id)
@@ -75,8 +75,8 @@ function NæsteSideKnap(): void{
         {
         elementById2.innerHTML = error.message;
         });
-    }
-    }
+    //    }
+    
 
 
 
