@@ -6,7 +6,7 @@ using System.Text;
 
 namespace UDPProxy
 {
-    class Proxy
+    public class Proxy
     {
         private readonly int PORT;
 
