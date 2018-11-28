@@ -58,6 +58,9 @@
     let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
     getIdButton.addEventListener("click", AxionGetBrugerById);
 
+    let NæsteSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("NæsteSide");
+    NæsteSideButton.addEventListener("click", NæsteSideKnap);
+
     function AxionGetBrugerById(): void
     { 
         let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
