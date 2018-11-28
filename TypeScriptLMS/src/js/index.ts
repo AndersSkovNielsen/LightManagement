@@ -35,6 +35,7 @@ for (let i: number = 0; i < elements.length; i++) {
 }
 
 
+
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger";
 
 
@@ -100,3 +101,24 @@ function CTO(): void
 }
 let toOuncesButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("GetIdButton");
 toOuncesButton.addEventListener("click", CTO);
+ //
+ //
+ //
+ //
+//Anders' tilføjelser
+
+//Button references
+let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");
+
+let fjernButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("FjernButton");
+
+//Button bindings
+tilføjButton.addEventListener("click", tilføjFunction)
+
+fjernButton.addEventListener("click", fjernFunction)
+
+//Button void functions
+function tilføjFunction(): void{}
+
+function fjernFunction(): void{}
+

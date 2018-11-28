@@ -38,8 +38,9 @@ namespace LightREST.Controllers
 
         // PUT: api/Bruger/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Bruger value)
+        public bool Put(int id, [FromBody] Bruger value)
         {
+            return manager.OpdaterBruger(id, value);
         }
 
         // DELETE: api/ApiWithActions/5
