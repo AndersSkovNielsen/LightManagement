@@ -41,6 +41,9 @@ function AxionGetBrugerById(): void
   });
 
 }
+let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
+getIdButton.addEventListener("click", AxionGetBrugerById);
+
  //
  //
  //
