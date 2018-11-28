@@ -4,27 +4,6 @@ import axios, {
     AxiosError
 } from "../../node_modules/axios/index";
 
-<<<<<<< HEAD
-//Template kode!
-interface Person {
-    firstName: string;
-    lastName: string;
-    //note her::::
-}
-
-function greeter(person: Person): string {
-    return "Hello, " + person.firstName + " " + person.lastName;
-}
-let user: Person = { firstName: "John", lastName: "Doe" };
-
-let element: HTMLDivElement = <HTMLDivElement> document.getElementById("content");
-element.innerHTML = greeter(user);
-//Template kode!
-=======
-
-
->>>>>>> a2b03c455e0d6079cff5f9bac90ec3e90830220a
-
 //Liste kode
 let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
 // let i: number;
@@ -41,12 +20,7 @@ for (let i: number = 0; i < elements.length; i++) {
     });
 }
 
-
-<<<<<<< HEAD
 //Aktuel kode
-=======
-
->>>>>>> a2b03c455e0d6079cff5f9bac90ec3e90830220a
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 
 
@@ -74,7 +48,7 @@ axios.get(uri)
 function AxionGetBid(): void
 {
 
-    axios.get('https://ande-easj-rest.azurewebsites.net/api/bruger')
+    axios.get('https://ande-easj-rest.azurewebsites.net/api/bruger/')
     .then(function (response) {
       console.log(response);
     })
