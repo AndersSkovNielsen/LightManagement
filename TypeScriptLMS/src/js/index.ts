@@ -4,7 +4,7 @@ import axios, {
     AxiosError
 } from "../../node_modules/axios/index";
 
-
+//Template kode!
 interface Person {
     firstName: string;
     lastName: string;
@@ -18,7 +18,9 @@ let user: Person = { firstName: "John", lastName: "Doe" };
 
 let element: HTMLDivElement = <HTMLDivElement> document.getElementById("content");
 element.innerHTML = greeter(user);
+//Template kode!
 
+//Liste kode
 let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
 // let i: number;
 
@@ -35,8 +37,8 @@ for (let i: number = 0; i < elements.length; i++) {
 }
 
 
-
-let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger";
+//Aktuel kode
+let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 
 
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
