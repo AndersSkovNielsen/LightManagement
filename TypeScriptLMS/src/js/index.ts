@@ -65,10 +65,17 @@ function AxionGetBrugerById(): void
     }
 }
 
+function NæsteSideKnap(): void{
+    console.log("Næste side er kaldt")
+    window.location.href = "NySide.htm";
+
+}
 
 
 
- //
+let NæsteSide:HTMLButtonElement=<HTMLButtonElement> document.getElementById("NæsteSide");
+NæsteSide.addEventListener("click", NæsteSideKnap);
+
  //
  //
  //
