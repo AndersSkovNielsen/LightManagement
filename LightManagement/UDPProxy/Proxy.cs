@@ -10,10 +10,10 @@ namespace UDPProxy
     {
         private readonly int PORT;
 
-        //public UDPReceiver(int port)
-        //{
-        //    PORT = port;
-        //}
+        public Proxy(int port)
+        {
+            PORT = port;
+        }
 
         public void start()
         {
