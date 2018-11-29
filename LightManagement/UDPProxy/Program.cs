@@ -7,7 +7,7 @@ namespace UDPProxy
     {
         static void Main(string[] args)
         {
-            Proxy proxy = new Proxy();
+            Proxy proxy = new Proxy(7147);
             proxy.start();
             
         }

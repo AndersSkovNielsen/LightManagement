@@ -17,9 +17,9 @@ namespace UDPProxy
 
         public void start()
         {
-            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
+            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, PORT);
 
-            using (UdpClient receiverSock = new UdpClient(10100)) // Raspberry port nummer her
+            using (UdpClient receiverSock = new UdpClient(7147)) // Raspberry port nummer her
             {
                 while (true)
                 {
@@ -47,11 +47,11 @@ namespace UDPProxy
             byte[] data = receiverSock.Receive(ref remoteEP);
             String inStr = Encoding.ASCII.GetString(data);
 
-            Console.WriteLine("modtaget " + inStr);
-            Console.WriteLine("sender ip=" + remoteEP.Address + " port=" + remoteEP.Port);
+            Console.WriteLine(inStr);
+            //Console.WriteLine("sender ip=" + remoteEP.Address + " port=" + remoteEP.Port);
 
-            byte[] outData = Encoding.ASCII.GetBytes(inStr.ToUpper());
-            receiverSock.Send(outData, outData.Length, remoteEP);
+            //byte[] outData = Encoding.ASCII.GetBytes(inStr.ToUpper());
+            //receiverSock.Send(outData, outData.Length, remoteEP);
         }
 
 
