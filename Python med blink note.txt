@@ -1,16 +1,19 @@
 #Prototype kode til python med blink
 
-BROADCAST_TO_PORT = 7000
+BROADCAST_TO_PORT = 7147
 import time
-#from socket import *
+from socket import *
 from datetime import datetime
 from sense_hat import SenseHat
+from time import sleep
 
-sense = SenseHat()
-accel_only = sense.get_accelerometer()
-print("p: {pitch}, r: {roll}, y: {yaw}".format(**accel_only))
-X = [255, 0, 0]  # Red
-O = [255, 255, 255]  # White
+sense = Sensehat()
+
+sock=socket(AF_INET, SOCK_DGRAM)
+sock.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+
+X = [255, 0, 0] # Red
+O = [255, 255, 255] # White
 image = [
 X, X, X, X, X, X, X, X,
 X, X, X, X, X, X, X, X,
@@ -19,32 +22,52 @@ X, X, X, X, X, X, X, X,
 X, X, X, X, X, X, X, X,
 X, X, X, X, X, X, X, X,
 X, X, X, X, X, X, X, X,
-X, X, X, X, X, X, X, X
+X, X, X, X, X, X, X, X,
 ]
-image2 = [
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O,
-O, O, O, O, O, O, O, O
+
+upImage = [
+O, O, O, X, X, O, O, O,
+O, O, X, X, X, X, O, O, 
+O, X, O, X, X, O, X, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
 ]
-#s = socket(AF_INET, SOCK_DGRAM)
-#s.bind(('', 14593))     # (ip, port)
-# no explicit bind: will bind to default IP + random port
-#s.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-data = "p: {pitch}, r: {roll}, y: {yaw}".format(**accel_only)
+
+broadMessage = ""
+
+sensitivity = 1.1
+
 while True:
-	print(data)
-	#s.sendto(bytes(data, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
-	data = "p: {pitch}, r: {roll}, y: {yaw}".format(**accel_only)
-	time.sleep(0.1)
-	sense.set_pixels(image2)
+	for event in sense.stick.get_events():
+		if event.action == "pressed":
+			if event.direction == "up":
+				sense.set_pixels(upImage)
+				sensitivity = sensitivity-0.03
+				broadMessage = "Sensitivity UP " +str(sensitivity)
+				sock.sendto(broadMessage, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
+				print(broadMessage)
+				sleep(1)
+			elif event.direction == "down":
+				sense.set_pixels(upImage)
+				sense.flip_v()
+				sensitivity = sensitivity+0.03
+				broadMessage = "Sensitivity Down " +str(sensitivity)
+				sock.sendto(broadMessage, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
+				print(broadMessage)
+				sleep(1)
+
+	acceleration= sense.get_accelerometer_raw()
+	x = acceleration['x']
+	y = acceleration['y']
+	z = acceleration['z']
 	
-	time.sleep(0.3)
-	accel_only = sense.get_accelerometer()
-	data1 = "p: {pitch}, r: {roll}, y: {yaw}".format(**accel_only)
-	if data1 != data:
-	  sense.set_pixels(image)
+	if x > sensitivity or y > sensitivity or z > sensitivity:
+		sense.set_pixels(image)
+		broadMessage = "Movement!"
+		sock.sendto(broadMessage, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
+		print(broadMessage)
+	else:	
+		sense.clear()
