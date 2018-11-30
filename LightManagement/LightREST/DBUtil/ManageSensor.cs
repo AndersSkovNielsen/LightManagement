@@ -7,41 +7,41 @@ using ModelLibrary;
 
 namespace LightREST.DBUtil
 {
-    public class ManageBruger
+    public class ManageSensor
     {
         private string connectionString =
-            @"";
+              @"";
 
         /// <summary>
-        /// SQL streng til at hente alle rækker i LMSBruger tabellen fra databasen
+        /// SQL streng til at hente alle rækker i LMSSensor tabellen fra databasen
         /// </summary>
-        private String queryString = "select * from LMSBruger";
-        
+        private String queryString = "select * from LMSSensor";
+
         /// <summary>
         /// SQL Streng til at hente en bestemt bruger ud fra angivet Id
         /// </summary>
-        private String queryStringFromID = "select * from LMSBruger where Id = @Id";
+        private String queryStringFromID = "select * from LMSSensor where Id = @Id";
 
         /// <summary>
-        /// SQL til til at indsætte et Bruger objekt som række i LMSBruger Tabellen i databasen
+        /// SQL til til at indsætte et Bruger objekt som række i LMSSensor Tabellen i databasen
         /// </summary>
-        private String insertSql = "insert into LMSBruger Values (@Brugernavn, @Kodeord)";
+        private String insertSql = "insert into LMSSensor Values (@Brugernavn, @Kodeord)"; //skal rettes til sensor!
 
         /// <summary>
-        /// SQL streng til at opdatere værdierne for en række i LMSBruger Tabellen i Databasen ud fra angivet Id, samt værdier der skal opdateres
+        /// SQL streng til at opdatere værdierne for en række i LMSSensor Tabellen i Databasen ud fra angivet Id, samt værdier der skal opdateres
         /// </summary>
-        private String updateSql = "update LMSBruger " +
-                                   "set Brugernavn = @Brugernavn, Kodeord = @Kodeord " +
+        private String updateSql = "update LMSSensor " +
+                                   "set Brugernavn = @Brugernavn, Kodeord = @Kodeord " + //Skal rettes til sensor!
                                    "where Id = @Id";
 
         /// <summary>
-        /// SQL streng til at slette en række fra LMSBruger babellen i databasen ud fra angivet Id
+        /// SQL streng til at slette en række fra LMSSensor babellen i databasen ud fra angivet Id
         /// </summary>
-        private String deleteSql = "delete from LMSBruger where Id = @Id";
+        private String deleteSql = "delete from LMSSensor where Id = @Id";
 
-        public List<Bruger> HentAlleBruger()
+        public List<Sensor> HentAlleSensor()
         {
-            List<Bruger> brugere = new List<Bruger>();
+            List<Sensor> Sensorer = new List<Sensor>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -51,37 +51,37 @@ namespace LightREST.DBUtil
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    brugere.Add(ReadBruger(reader));
+                    Sensorer.Add(ReadSensor(reader));
                 }
             }
-            return brugere;
+            return Sensorer;
         }
 
-        public Bruger HentEnBruger(int brugerId)
+        public Sensor HentSensorFraId(int sensorId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryStringFromID, connection);
-                command.Parameters.AddWithValue("@Id", brugerId);
+                command.Parameters.AddWithValue("@Id", sensorId);
 
                 command.Connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    return ReadBruger(reader);
+                    return ReadSensor(reader);
                 }
             }
             return null;
         }
 
-        public bool TilføjBruger(Bruger bruger)
+        public bool TilføjSensor(Sensor sensor)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(insertSql, connection);
-                
-                TilføjVærdiBruger(bruger, command);
+
+                TilføjVærdiSensor(sensor, command);
 
                 command.Connection.Open();
 
@@ -95,14 +95,14 @@ namespace LightREST.DBUtil
             }
         }
 
-        public bool OpdaterBruger(int brugerId, Bruger bruger)
+        public bool OpdaterSensor(int sensorId, Sensor sensor)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(updateSql, connection);
-                
-                TilføjVærdiBruger(bruger, command);
-                command.Parameters.AddWithValue("@Id", brugerId);
+
+                TilføjVærdiSensor(sensor, command);
+                command.Parameters.AddWithValue("@Id", sensorId);
 
                 command.Connection.Open();
 
@@ -116,9 +116,9 @@ namespace LightREST.DBUtil
             }
         }
 
-        public Bruger FjernBruger(int brugerID)
+        public Sensor FjernSensor(int sensorID)
         {
-            Bruger opgave = HentEnBruger(brugerID);
+            Sensor opgave = HentSensorFraId(sensorID);
             if (opgave == null)
             {
                 return null;
@@ -127,7 +127,7 @@ namespace LightREST.DBUtil
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(deleteSql, connection);
-                command.Parameters.AddWithValue("@Id", brugerID);
+                command.Parameters.AddWithValue("@Id", sensorID);
 
                 command.Connection.Open();
 
@@ -141,20 +141,21 @@ namespace LightREST.DBUtil
             }
         }
 
-        private Bruger ReadBruger(SqlDataReader reader)
+        private Sensor ReadSensor(SqlDataReader reader)
         {
             int id = reader.GetInt32(0);
-            String brugernavn = reader.GetString(1);
-            String kodeord = reader.GetString(2);
-            
-            
-            return new Bruger(id, brugernavn, kodeord);
+            //String brugernavn = reader.GetString(1); Skal Rettes til Sensor!
+            //String kodeord = reader.GetString(2);
+
+
+            return new Sensor(); //skal have parametre til at konstruere en sensor!
         }
 
-        private void TilføjVærdiBruger(Bruger bruger, SqlCommand command)
+        private void TilføjVærdiSensor(Sensor sensor, SqlCommand command)
         {
-            command.Parameters.AddWithValue("@Brugernavn", bruger.Brugernavn);
-            command.Parameters.AddWithValue("@Kodeord", bruger.Kodeord);
+            //command.Parameters.AddWithValue("@Brugernavn", sensor.Brugernavn);   Skal rettes til Sensor!
+            //command.Parameters.AddWithValue("@Kodeord", sensor.Kodeord);
         }
     }
 }
+

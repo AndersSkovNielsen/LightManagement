@@ -17,35 +17,35 @@ namespace LightREST.Controllers
 
         // GET: api/Bruger
         [HttpGet]
-        public IEnumerable<Bruger> GetAll()
+        public IEnumerable<Bruger> HentAlleBruger()
         {
             return manager.HentAlleBruger();
         }
 
         // GET: api/Bruger/5
         [HttpGet("{id}", Name = "Get")]
-        public Bruger Get(int id)
+        public Bruger HentEnBruger(int id)
         {
-            return manager.HentBrugerFraId(id);
+            return manager.HentEnBruger(id);
         }
 
         // POST: api/Bruger
         [HttpPost]
-        public bool Post([FromBody] Bruger value)
+        public bool TilføjBruger([FromBody] Bruger value)
         {
             return manager.TilføjBruger(value);
         }
 
         // PUT: api/Bruger/5
         [HttpPut("{id}")]
-        public bool Put(int id, [FromBody] Bruger value)
+        public bool OpdaterBruger(int id, [FromBody] Bruger value)
         {
             return manager.OpdaterBruger(id, value);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public Bruger Delete(int id)
+        public Bruger SletBruger(int id)
         {
             return manager.FjernBruger(id);
         }

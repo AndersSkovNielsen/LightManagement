@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LightREST.DBUtil;
 using Microsoft.AspNetCore.Mvc;
+using ModelLibrary;
 
 namespace LightREST.Controllers
 {
@@ -10,36 +12,41 @@ namespace LightREST.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        ManageSensor manager = new ManageSensor();
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public List<Sensor> HentAlleSensor()
         {
-            return new string[] { "value1", "value2" };
+            return manager.HentAlleSensor();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public Sensor HentEnSensor(int id)
         {
-            return "value";
+            return manager.HentEnSensor(id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public bool TilføjSensor([FromBody] string value)
         {
+            return manager.TilføjSensor(value);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public bool OpdaterSensor(int id, [FromBody] Sensor value)
         {
+            return manager.OpdaterSensor(id, value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public Sensor FjernSensor(int id)
         {
+            return manager.FjernSensor(id);
         }
     }
 }
