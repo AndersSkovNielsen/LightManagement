@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -48,6 +49,13 @@ namespace UDPProxy
             String inStr = Encoding.ASCII.GetString(data);
 
             Console.WriteLine(inStr);
+
+            if (inStr.StartsWith("Sensitivity"))
+            {
+                string[] splitString = inStr.Split(" ");
+                
+            }
+
             //Console.WriteLine("sender ip=" + remoteEP.Address + " port=" + remoteEP.Port);
 
             //byte[] outData = Encoding.ASCII.GetBytes(inStr.ToUpper());
