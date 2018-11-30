@@ -10,7 +10,7 @@ namespace LightREST.DBUtil
     public class ManageSensor
     {
         private string connectionString =
-              @"";
+              @"Server=tcp:ande651p-easj-newdbserver.database.windows.net,1433;Initial Catalog=ande651p-easj-DB;Persist Security Info=False;User ID=asn230791;Password=LMSprojekt3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         /// <summary>
         /// SQL streng til at hente alle rækker i LMSSensor tabellen fra databasen
@@ -25,14 +25,14 @@ namespace LightREST.DBUtil
         /// <summary>
         /// SQL til til at indsætte et Bruger objekt som række i LMSSensor Tabellen i databasen
         /// </summary>
-        private String insertSql = "insert into LMSSensor Values (@Brugernavn, @Kodeord)"; //skal rettes til sensor!
+        private String insertSql = "insert into LMSSensor Values (@Id, @IsMoving, @Sensitivity)"; //skal rettes til sensor!
 
         /// <summary>
         /// SQL streng til at opdatere værdierne for en række i LMSSensor Tabellen i Databasen ud fra angivet Id, samt værdier der skal opdateres
         /// </summary>
         private String updateSql = "update LMSSensor " +
-                                   "set Brugernavn = @Brugernavn, Kodeord = @Kodeord " + //Skal rettes til sensor!
-                                   "where Id = @Id";
+                                   "set Id = @Id, IsMoving = @IsMoving, Sensitivity = @Sensitivity " + //Skal rettes til sensor!
+                                   "where Id = @OriginId";
 
         /// <summary>
         /// SQL streng til at slette en række fra LMSSensor babellen i databasen ud fra angivet Id
@@ -57,7 +57,7 @@ namespace LightREST.DBUtil
             return Sensorer;
         }
 
-        public Sensor HentSensorFraId(int sensorId)
+        public Sensor HentEnSensor(int sensorId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -102,7 +102,7 @@ namespace LightREST.DBUtil
                 SqlCommand command = new SqlCommand(updateSql, connection);
 
                 TilføjVærdiSensor(sensor, command);
-                command.Parameters.AddWithValue("@Id", sensorId);
+                command.Parameters.AddWithValue("@OriginId", sensorId);
 
                 command.Connection.Open();
 
@@ -118,7 +118,7 @@ namespace LightREST.DBUtil
 
         public Sensor FjernSensor(int sensorID)
         {
-            Sensor opgave = HentSensorFraId(sensorID);
+            Sensor opgave = HentEnSensor(sensorID);
             if (opgave == null)
             {
                 return null;
@@ -144,17 +144,18 @@ namespace LightREST.DBUtil
         private Sensor ReadSensor(SqlDataReader reader)
         {
             int id = reader.GetInt32(0);
-            //String brugernavn = reader.GetString(1); Skal Rettes til Sensor!
-            //String kodeord = reader.GetString(2);
-
-
-            return new Sensor(); //skal have parametre til at konstruere en sensor!
+            string isMoving = reader.GetString(1);
+            bool m = Boolean.TryParse(isMoving, out m);
+            double sensitivity = reader.GetDouble(2);
+            
+            return new Sensor(id, m, sensitivity);
         }
 
         private void TilføjVærdiSensor(Sensor sensor, SqlCommand command)
         {
-            //command.Parameters.AddWithValue("@Brugernavn", sensor.Brugernavn);   Skal rettes til Sensor!
-            //command.Parameters.AddWithValue("@Kodeord", sensor.Kodeord);
+          command.Parameters.AddWithValue("@Id", sensor.Id);
+          command.Parameters.AddWithValue("@IsMoving", sensor.IsMoving.ToString());
+          command.Parameters.AddWithValue("@Sensitivity", sensor.Sensitivity);
         }
     }
 }

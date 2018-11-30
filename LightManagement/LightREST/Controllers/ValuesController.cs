@@ -10,7 +10,7 @@ namespace LightREST.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SensorController : ControllerBase
+    public class ValuesController : ControllerBase
     {
         ManageSensor manager = new ManageSensor();
 
