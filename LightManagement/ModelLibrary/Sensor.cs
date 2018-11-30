@@ -30,6 +30,18 @@ namespace ModelLibrary
         {
         }
 
+        public Sensor(int id, bool isMoving)
+        {
+            _id = id;
+            _isMoving = isMoving;
+        }
+
+        public Sensor(int id, double sensitivity)
+        {
+            _id = id;
+            _sensitivity = sensitivity;
+        }
+
         public Sensor(int id, bool isMoving, double sensitivity)
         {
             _id = id;

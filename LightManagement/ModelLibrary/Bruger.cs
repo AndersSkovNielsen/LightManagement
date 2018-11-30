@@ -36,6 +36,13 @@ namespace ModelLibrary
         public Bruger()
         {}
 
+        public Bruger(int id, string brugernavn, string kodeord)
+        {
+            _id = id;
+            _brugernavn = brugernavn;
+            _kodeord = kodeord;
+        }
+
         public Bruger(int id, string brugernavn, string kodeord, Sensor sensor)
         {
             _id = id;

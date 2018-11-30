@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Sockets;
 using System.Text;
+using ModelLibrary;
+using Newtonsoft.Json;
 
 namespace UDPProxy
 {
     public class Proxy
     {
         private readonly int PORT;
+        private static string Uri = "https://ande-easj-rest.azurewebsites.net/api/Sensor/";
 
         public Proxy(int port)
         {
@@ -72,20 +76,37 @@ namespace UDPProxy
             //receiverSock.Send(outData, outData.Length, remoteEP);
         }
 
-        private static void ValueToRest(int id, double value)
+        private static bool ValueToRest(int id, double value)
         {
             using (HttpClient client = new HttpClient())
             {
 
             }
+
+            return false;
         }
 
-        private static void ValueToRest(int id, bool value)
+        private static bool ValueToRest(int id, bool value)
         {
+            Sensor opdaterSensor = new Sensor(id, value);
+
+            String json = JsonConvert.SerializeObject(opdaterSensor);
+            StringContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
             using (HttpClient client = new HttpClient())
             {
+                HttpResponseMessage resultMessage = client.PutAsync(Uri + id, content).Result;
 
+                if (resultMessage.IsSuccessStatusCode)
+                {
+                    string resultStr = resultMessage.Content.ReadAsStringAsync().Result;
+                    bool res = JsonConvert.DeserializeObject<bool>(resultStr);
+                    return res;
+                }
             }
+
+            return false;
         }
     }
 }
