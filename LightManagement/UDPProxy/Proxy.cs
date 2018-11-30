@@ -14,7 +14,7 @@ namespace UDPProxy
     public class Proxy
     {
         private readonly int PORT;
-        private static string Uri = "https://ande-easj-rest.azurewebsites.net/api/Sensor/";
+        private static string Uri = "http://localhost:65275/api/sensor/";
 
         public Proxy(int port)
         {
