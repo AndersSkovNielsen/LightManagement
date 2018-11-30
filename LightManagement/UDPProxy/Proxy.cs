@@ -17,9 +17,9 @@ namespace UDPProxy
 
         public void start()
         {
-            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, PORT);
+            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 7147);
 
-            using (UdpClient receiverSock = new UdpClient(7147)) // Raspberry port nummer her
+            using (UdpClient receiverSock = new UdpClient(PORT)) // Raspberry port nummer her
             {
                 while (true)
                 {
