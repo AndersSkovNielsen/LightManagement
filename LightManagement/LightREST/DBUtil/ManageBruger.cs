@@ -147,6 +147,7 @@ namespace LightREST.DBUtil
             String brugernavn = reader.GetString(1);
             String kodeord = reader.GetString(2);
             
+            
             return new Bruger(id, brugernavn, kodeord);
         }
 
