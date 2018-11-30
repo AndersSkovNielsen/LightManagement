@@ -9,6 +9,7 @@ namespace ModelLibrary
         private int _id;
         private string _brugernavn;
         private string _kodeord;
+        private Sensor _sensor;
 
         public int Id
         {
@@ -25,13 +26,22 @@ namespace ModelLibrary
             get { return _kodeord; }
             set { _kodeord = value; }
         }
+
+        public Sensor Sensor
+        {
+            get { return _sensor; }
+            set { _sensor = value; }
+        }
+
         public Bruger()
-        { }
-        public Bruger(int id, string brugernavn, string kodeord)
+        {}
+
+        public Bruger(int id, string brugernavn, string kodeord, Sensor sensor)
         {
             _id = id;
             _brugernavn = brugernavn;
             _kodeord = kodeord;
+            _sensor = sensor;
         }
     }
 }
