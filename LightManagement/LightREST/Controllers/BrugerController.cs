@@ -26,7 +26,7 @@ namespace LightREST.Controllers
         [HttpGet("{id}", Name = "Get")]
         public Bruger HentEnBruger(int id)
         {
-            return manager.HentBrugerFraId(id);
+            return manager.HentEnBruger(id);
         }
 
         // POST: api/Bruger

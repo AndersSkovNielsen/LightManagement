@@ -57,7 +57,7 @@ namespace LightREST.DBUtil
             return brugere;
         }
 
-        public Bruger HentBrugerFraId(int brugerId)
+        public Bruger HentEnBruger(int brugerId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -118,7 +118,7 @@ namespace LightREST.DBUtil
 
         public Bruger FjernBruger(int brugerID)
         {
-            Bruger opgave = HentBrugerFraId(brugerID);
+            Bruger opgave = HentEnBruger(brugerID);
             if (opgave == null)
             {
                 return null;
