@@ -61,6 +61,7 @@
     }
 
     let MenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Index");
+    //If checker om menuButton er null. Fikser Fejlen hvor den loader for hurtigt.
     if (MenuButton){
         MenuButton.addEventListener("click", HovedmenuKnap);
     }
