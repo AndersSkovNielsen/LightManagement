@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
 
@@ -53,7 +54,16 @@ namespace UDPProxy
             if (inStr.StartsWith("Sensitivity"))
             {
                 string[] splitString = inStr.Split(" ");
-                
+                int sensorID = int.Parse(splitString[5]);
+                double senseValue = double.Parse(splitString[2]);
+                ValueToRest(sensorID, senseValue);
+            }
+            else if (inStr.StartsWith("Movement!"))
+            {
+                string[] splitString = inStr.Split(" ");
+                int sensorID = int.Parse(splitString[2]);
+                bool moving = true;
+                ValueToRest(sensorID, moving);
             }
 
             //Console.WriteLine("sender ip=" + remoteEP.Address + " port=" + remoteEP.Port);
@@ -62,6 +72,20 @@ namespace UDPProxy
             //receiverSock.Send(outData, outData.Length, remoteEP);
         }
 
+        private static void ValueToRest(int id, double value)
+        {
+            using (HttpClient client = new HttpClient())
+            {
 
+            }
+        }
+
+        private static void ValueToRest(int id, bool value)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+            }
+        }
     }
 }

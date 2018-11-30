@@ -38,6 +38,7 @@ O, O, O, X, X, O, O, O,
 
 broadMessage = ""
 
+gyroID = 1
 sensitivity = 1.1
 
 while True:
@@ -46,7 +47,7 @@ while True:
 			if event.direction == "up":
 				sense.set_pixels(upImage)
 				sensitivity = sensitivity-0.03
-				broadMessage = "Sensitivity UP " +str(sensitivity)
+				broadMessage = "Sensitivity UP: " + str(sensitivity) + " for GyroSensor: " + str(gyroID)
 				sock.sendto(broadMessage, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
 				print(broadMessage)
 				sleep(1)
@@ -54,7 +55,7 @@ while True:
 				sense.set_pixels(upImage)
 				sense.flip_v()
 				sensitivity = sensitivity+0.03
-				broadMessage = "Sensitivity Down " +str(sensitivity)
+				broadMessage = "Sensitivity Down: " + str(sensitivity) + " for GyroSensor: " + str(gyroID)
 				sock.sendto(broadMessage, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
 				print(broadMessage)
 				sleep(1)
@@ -66,7 +67,7 @@ while True:
 	
 	if x > sensitivity or y > sensitivity or z > sensitivity:
 		sense.set_pixels(image)
-		broadMessage = "Movement!"
+		broadMessage = "Movement! GyroSensor: " + str(gyroID)
 		sock.sendto(broadMessage, "UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
 		print(broadMessage)
 	else:	
