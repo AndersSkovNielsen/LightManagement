@@ -48,27 +48,32 @@
 
 
 
-    //her er den plz
+    
     function LoginSideKnap(): void
     {
-    console.log("Login side er kaldt")
-    window.location.href = "LoginSide.htm";
+     console.log("Login side er kaldt")
+     window.location.href = "LoginSide.htm";
     }
-    
     function HovedmenuKnap(): void
     {
-    console.log("Hovedmenu side er kaldt")
-    window.location.href = "index.htm";
+     console.log("Hovedmenu side er kaldt")
+     window.location.href = "index.htm";
     }
+
+    let MenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Index");
+    if (MenuButton){
+        MenuButton.addEventListener("click", HovedmenuKnap);
+    }
+    
+    
 
     let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
     getIdButton.addEventListener("click", AxionGetBrugerById);
 
     let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
     LoginSideButton.addEventListener("click", LoginSideKnap);
-
-    let HovedmenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("IndexSideButton");
-    HovedmenuButton.addEventListener("click", HovedmenuKnap);
+    
+    
 
     function AxionGetBrugerById(): void
     { 
