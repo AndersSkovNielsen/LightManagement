@@ -49,17 +49,26 @@
 
 
     //her er den plz
-    function NæsteSideKnap(): void
+    function LoginSideKnap(): void
     {
-    console.log("Næste side er kaldt")
-    window.location.href = "NySide.htm";
+    console.log("Login side er kaldt")
+    window.location.href = "LoginSide.htm";
+    }
+    
+    function HovedmenuKnap(): void
+    {
+    console.log("Hovedmenu side er kaldt")
+    window.location.href = "index.htm";
     }
 
     let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
     getIdButton.addEventListener("click", AxionGetBrugerById);
 
-    let NæsteSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("NæsteSide");
-    NæsteSideButton.addEventListener("click", NæsteSideKnap);
+    let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
+    LoginSideButton.addEventListener("click", LoginSideKnap);
+
+    let HovedmenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("IndexSideButton");
+    HovedmenuButton.addEventListener("click", HovedmenuKnap);
 
     function AxionGetBrugerById(): void
     { 
