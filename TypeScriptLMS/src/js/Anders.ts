@@ -1,11 +1,10 @@
-//Virker ikke umiddelbart - Bliver ikke opdateret?
 //import axios, { AxiosPromise } from 'axios';
 import axios, {
     AxiosResponse,
     AxiosError
 } from "../../node_modules/axios/index";
 
-let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
+let uri: string = "http://ande-easj-rest.azurewebsites.net/api/bruger/";
 
 //Anders' tilføjelser
 
@@ -21,33 +20,40 @@ fjernButton.addEventListener("click", fjernFunction)
 
 //Button void functions
 function tilføjFunction(): void{
-    
-    let tilføjName: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjName");
-    let tilføjKode: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjKode");
 
-    let navn: string = String(tilføjName.value);
-    let kode: string = String(tilføjKode.value);
+let tilføjID: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjID");
+let tilføjName: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjName");
+let tilføjKode: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjKode");
 
-    console.log(navn);
-    console.log(kode);
+let id: number = Number(tilføjID.value);
+let navn: string = String(tilføjName.value);
+let kode: string = String(tilføjKode.value);
 
-    axios.post('http://ande-easj-rest.azurewebsites.net/api/bruger/', {
+console.log(id)
+console.log(navn);
+console.log(kode);
+
+axios.post(uri, 
+{
+    Id: id,
     Brugernavn: navn,  
     Kodeord: kode
-  })
-  .then(function(response) {
+})
+.then(function(response) 
+{
     console.log(response.status);
-  });
+});
 }
 
-function fjernFunction(): void{
-  
-  let sletBruger: HTMLInputElement = <HTMLInputElement> document.getElementById("SletBruger");
-  let id: number = Number(sletBruger.value);
+    function fjernFunction(): void
+    {
 
-  axios.delete(uri + id)
-    .then(function(response){
-  console.log(response.data); // ex.: { user: 'Your User'}
-  console.log(response.status); // ex.: 200
-})
+    let sletBruger: HTMLInputElement = <HTMLInputElement> document.getElementById("SletBruger");
+    let id: number = Number(sletBruger.value);
+
+    axios.delete(uri + id)
+  .then(function(response){
+    console.log(response.data); // ex.: { user: 'Your User'}
+    console.log(response.status); // ex.: 200
+    })
 }
