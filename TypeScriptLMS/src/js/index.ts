@@ -6,6 +6,7 @@
     } from "../../node_modules/axios/index";
     import "./Login";
     import "./Anders";
+    import "./Clock";
 
     //Liste kode
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
