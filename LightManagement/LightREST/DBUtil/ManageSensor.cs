@@ -10,7 +10,7 @@ namespace LightREST.DBUtil
     public class ManageSensor
     {
         private string connectionString =
-              @"Server=tcp:ande651p-easj-newdbserver.database.windows.net,1433;Initial Catalog=ande651p-easj-DB;Persist Security Info=False;User ID=asn230791;Password=LMSprojekt3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+              @"";
 
         /// <summary>
         /// SQL streng til at hente alle rækker i LMSSensor tabellen fra databasen
