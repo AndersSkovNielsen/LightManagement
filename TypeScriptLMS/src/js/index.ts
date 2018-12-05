@@ -37,15 +37,16 @@
         elementById.innerHTML = JSON.stringify(response.data);
     })
 
+    
 
     axios.get(uri+InputConverter).then(function(response:AxiosResponse): void
     {
     elementById2.innerHTML= JSON.stringify(response.data);
     })
 
+    
 
-
-
+    
 
 
     
@@ -54,17 +55,9 @@
      console.log("Login side er kaldt")
      window.location.href = "LoginSide.htm";
     }
-    function HovedmenuKnap(): void
-    {
-     console.log("Hovedmenu side er kaldt")
-     window.location.href = "index.htm";
-    }
+   
 
-    let MenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Index");
-    //If checker om menuButton er null. Fikser Fejlen hvor den loader for hurtigt.
-    if (MenuButton){
-        MenuButton.addEventListener("click", HovedmenuKnap);
-    }
+    
     
     
 
@@ -98,7 +91,7 @@
     }
     //}
     
-
+ 
 
 
 
