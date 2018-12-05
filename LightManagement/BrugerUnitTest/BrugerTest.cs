@@ -3,11 +3,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BrugerUnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class BrugerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestListeLængde()
         {
+
         }
     }
 }
