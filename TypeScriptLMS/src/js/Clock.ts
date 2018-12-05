@@ -10,10 +10,13 @@ let timeZone:string="";
 
 let result= axios.get(uri).then(function (response: AxiosResponse): void
 {
-raw= response.data.currentDateTime;
-date= raw.slice(0,11);
-time= raw.slice(12,17);
-weekDay=response.data.dayOfTheWeek;
-timeZone=response.data.timeZoneName;
+raw= raw + response.data.currentDateTime;
+date= date+ raw.slice(0,11);
+time= time+ raw.slice(12,17);
+weekDay=weekDay+response.data.dayOfTheWeek;
+timeZone=timeZone+response.data.timeZoneName;
 
 })
+
+let display :HTMLDivElement= <HTMLDivElement> document.getElementById("clock") 
+display.innerHTML= weekDay +" "+  date + " " + time +" "+ timeZone; 
