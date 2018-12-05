@@ -4,6 +4,8 @@
     AxiosResponse,
     AxiosError
     } from "../../node_modules/axios/index";
+    import "./Login";
+    import "./Anders";
 
     //Liste kode
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
