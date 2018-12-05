@@ -36,7 +36,16 @@
 
     axios.get(uri).then(function (response: AxiosResponse): void
     {
-        elementById.innerHTML = JSON.stringify(response.data);
+        let list: string = "";
+        let i: number;
+
+            for(i=0; i<10; i++)
+            {
+                list = list + response.data[i].id + " - " + response.data[i].brugernavn + " - " + response.data[i].kodeord + "<br/>";
+            }
+        
+        elementById.innerHTML = list;
+        //elementById.innerHTML = JSON.stringify(response.data);
     })
 
     
@@ -118,17 +127,21 @@
     //Button void functions
     function tilføjFunction(): void{
     
+    let tilføjID: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjID");
     let tilføjName: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjName");
     let tilføjKode: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjKode");
 
+    let id: number = Number(tilføjID.value);
     let navn: string = String(tilføjName.value);
     let kode: string = String(tilføjKode.value);
 
+    console.log(id)
     console.log(navn);
     console.log(kode);
 
     axios.post('http://ande-easj-rest.azurewebsites.net/api/bruger/', 
     {
+        Id: id,
         Brugernavn: navn,  
         Kodeord: kode
     })
