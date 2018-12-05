@@ -45,7 +45,6 @@
             }
         
         elementById.innerHTML = list;
-        //elementById.innerHTML = JSON.stringify(response.data);
     })
 
     
@@ -95,7 +94,6 @@
             .then(function (response: AxiosResponse): void 
         {
             elementById2.innerHTML = response.data.id + " - " + response.data.brugernavn + " - " + response.data.kodeord
-            //elementById2.innerHTML = JSON.stringify(response.data);
         })
         .catch(function (error: AxiosError): void 
         {
