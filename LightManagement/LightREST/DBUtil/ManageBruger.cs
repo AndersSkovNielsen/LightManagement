@@ -10,7 +10,7 @@ namespace LightREST.DBUtil
     public class ManageBruger
     {
         private string connectionString =
-            @"";
+            @"Server=tcp:ande651p-easj-newdbserver.database.windows.net,1433;Initial Catalog=ande651p-easj-DB;Persist Security Info=False;User ID=asn230791;Password=LMSprojekt3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         /// <summary>
         /// SQL streng til at hente alle rækker i LMSBruger tabellen fra databasen
@@ -25,13 +25,13 @@ namespace LightREST.DBUtil
         /// <summary>
         /// SQL til til at indsætte et Bruger objekt som række i LMSBruger Tabellen i databasen
         /// </summary>
-        private String insertSql = "insert into LMSBruger Values (@Brugernavn, @Kodeord)";
+        private String insertSql = "insert into LMSBruger Values (@Id, @Brugernavn, @Kodeord)";
 
         /// <summary>
         /// SQL streng til at opdatere værdierne for en række i LMSBruger Tabellen i Databasen ud fra angivet Id, samt værdier der skal opdateres
         /// </summary>
         private String updateSql = "update LMSBruger " +
-                                   "set Brugernavn = @Brugernavn, Kodeord = @Kodeord " +
+                                   "set Id = @Id, Brugernavn = @Brugernavn, Kodeord = @Kodeord " +
                                    "where Id = @Id";
 
         /// <summary>
@@ -153,6 +153,7 @@ namespace LightREST.DBUtil
 
         private void TilføjVærdiBruger(Bruger bruger, SqlCommand command)
         {
+            command.Parameters.AddWithValue("@Id", bruger.Id);
             command.Parameters.AddWithValue("@Brugernavn", bruger.Brugernavn);
             command.Parameters.AddWithValue("@Kodeord", bruger.Kodeord);
         }
