@@ -5,10 +5,6 @@ AxiosError
 } from "../../node_modules/axios/index";
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
-
-
-
-
 interface IPost {
     
     id: number;
@@ -16,9 +12,33 @@ interface IPost {
     kodeord: string;
     sensor: null;
 }
-interface IPost extends Array<IPost>{}
 
- var result:IPost[] = []
+let result:IPost[] = new IPost[30]; //hvordan erklæres array??
+function AxiosData (response:AxiosResponse):void
+{
+    let i:number=0;
+    response.data.forEach(e => 
+        {
+result[i].brugernavn=JSON.stringify(e.brugernavn);
+result[i].id=e.id;
+result[i].kodeord=e.kodeord;
+result[i].sensor=e.sensor;
+i=i+1;
+
+        
+    });
+    
+   
+}
+
+
+
+
+
+
+ axios.get(uri).then(AxiosData).catch()
+     
+
    
  
 
