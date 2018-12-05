@@ -1,22 +1,28 @@
 import axios, { AxiosPromise, AxiosResponse } from  "../../node_modules/axios/index";
-
+let display :HTMLDivElement= <HTMLDivElement> document.getElementById("clock") 
 let uri:string = "http://worldclockapi.com/api/jsonp/cet/now?callback=mycallback"
 
-let raw:string ="";
-let date:string= "";
-let time:string="";
-let weekDay:string ="";
-let timeZone:string="";
+let raw:string ;
+let date:string;
+let time:string;
+let weekDay:string ;
+let timeZone:string;
+let blalba:string;
+
+export function hentDato():void
+{
+
 
 let result= axios.get(uri).then(function (response: AxiosResponse): void
 {
-raw= raw + response.data.currentDateTime;
-date= date+ raw.slice(0,11);
+raw=  (response.data.currentDateTime).jsonp;
+console.log (raw)
+date=  raw.slice(0,11);
 time= time+ raw.slice(12,17);
-weekDay=weekDay+response.data.dayOfTheWeek;
-timeZone=timeZone+response.data.timeZoneName;
+weekDay= response.data.dayOfTheWeek;
+timeZone=response.data.timeZoneName;
 
 })
-
-let display :HTMLDivElement= <HTMLDivElement> document.getElementById("clock") 
-display.innerHTML= weekDay +" "+  date + " " + time +" "+ timeZone; 
+blalba=weekDay +" "+  date + " " + time +" "+ timeZone;
+display.innerHTML= blalba; 
+}

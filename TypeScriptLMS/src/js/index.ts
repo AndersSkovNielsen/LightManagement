@@ -6,7 +6,7 @@
     } from "../../node_modules/axios/index";
     import "./Login";
     import "./Anders";
-    import "./Clock";
+    import {hentDato} from "./Clock";
 
     //Liste kode
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
@@ -16,6 +16,7 @@
     {
     elements[i].addEventListener("click", function (): void 
     {
+         hentDato();
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
         if (content.style.maxHeight) 
