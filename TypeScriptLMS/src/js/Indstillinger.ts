@@ -1,9 +1,17 @@
-let slider: HTMLInputElement = <HTMLInputElement> document.getElementById("myRange");
+let i = document.querySelector('input');
+let o = document.querySelector('output');
+
+let slider: HTMLProgressElement = <HTMLProgressElement> document.getElementById("myRange");
 let output =  document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
+output.innerHTML = slider.value.toString(); // Display the default slider value
+
+
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-    output.innerHTML = this.value;
+function slideSet() {
+    console.log(i.value)
+    o.innerHTML = i.value;
 }
+
+slider.addEventListener("scroll", slideSet)
 //Eksperiment
