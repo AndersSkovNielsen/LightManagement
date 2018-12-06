@@ -6,17 +6,23 @@
     } from "../../node_modules/axios/index";
     import "./Login";
     import "./Bruger";
+    import "./Hovedmenu";
     import {hentDato} from "./Clock";
 
     //Liste kode
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
     // let i: number;
 
+
+
+
+
+
     for (let i: number = 0; i < elements.length; i++) 
     {
     elements[i].addEventListener("click", function (): void 
     {
-         hentDato();
+         hentDato(); //hvorfor virker dette først ved 2. klik på listen?
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
         if (content.style.maxHeight) 
@@ -75,10 +81,10 @@
         {
         elementById2.innerHTML = error.message;
         });
+        }
     }
-}
 
-let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
+    let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
     LoginSideButton.addEventListener("click", LoginSideKnap);
     
     function LoginSideKnap(): void
@@ -87,11 +93,11 @@ let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementByI
      window.location.href = "LoginSide.htm";
     }
 
-let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
-TilbageButton.addEventListener("click", HovedmenuKnap);
+    let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
+    TilbageButton.addEventListener("click", HovedmenuKnap);
 
-function HovedmenuKnap(): void
-{
-console.log("Hovedmenu er kaldt")
-window.location.href = "Hovedmenu.htm";
-}
+    function HovedmenuKnap(): void
+    {
+    console.log("Hovedmenu er kaldt")
+    window.location.href = "Hovedmenu.htm";
+    }
