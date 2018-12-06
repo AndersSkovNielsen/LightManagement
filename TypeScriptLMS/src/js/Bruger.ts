@@ -2,11 +2,9 @@
 import axios, {
     AxiosResponse,
     AxiosError
-} from "../../node_modules/axios/index";
+} from "axios";
 
 let uri: string = "http://ande-easj-rest.azurewebsites.net/api/bruger/";
-
-//Anders' tilføjelser
 
 //Button references
 let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");

@@ -5,7 +5,7 @@
     AxiosError
     } from "../../node_modules/axios/index";
     import "./Login";
-    import "./Anders";
+    import "./Bruger";
     import {hentDato} from "./Clock";
 
     //Liste kode
