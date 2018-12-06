@@ -29,8 +29,6 @@
     });
     }
 
-    //Aktuel kode (forbindelse til Azure
-
     let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
     let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
     let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
@@ -49,37 +47,13 @@
         elementById.innerHTML = list;
     })
 
-    
-
     axios.get(uri+InputConverter).then(function(response:AxiosResponse): void
     {
     elementById2.innerHTML= JSON.stringify(response.data);
     })
 
-    
-
-    
-
-
-    
-    function LoginSideKnap(): void
-    {
-     console.log("Login side er kaldt")
-     window.location.href = "LoginSide.htm";
-    }
-   
-
-    
-    
-    
-
     let getIdButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("GetIdButton");
     getIdButton.addEventListener("click", AxionGetBrugerById);
-
-    let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
-    LoginSideButton.addEventListener("click", LoginSideKnap);
-    
-    
 
     function AxionGetBrugerById(): void
     { 
@@ -102,4 +76,22 @@
         elementById2.innerHTML = error.message;
         });
     }
+}
+
+let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
+    LoginSideButton.addEventListener("click", LoginSideKnap);
+    
+    function LoginSideKnap(): void
+    {
+     console.log("Login side er kaldt")
+     window.location.href = "LoginSide.htm";
+    }
+
+let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
+TilbageButton.addEventListener("click", HovedmenuKnap);
+
+function HovedmenuKnap(): void
+{
+console.log("Hovedmenu er kaldt")
+window.location.href = "Hovedmenu.htm";
 }
