@@ -28,7 +28,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
     "axios-jsonp": "^1.0.2",
     "require": "^2.4.20"
+=======
+    "axios-jsonp": "^1.0.2"
+>>>>>>> d07d4cc2eeda4e7701090d411efc30a86828a517
   }
 }

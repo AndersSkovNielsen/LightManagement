@@ -19,7 +19,7 @@ function AxiosData (response:AxiosResponse):void
     let i:number=0;
     response.data.forEach(e => 
         {
-result[i].brugernavn=JSON.stringify(e.brugernavn);
+result[i].brugernavn=e.brugernavn;
 result[i].id=e.id;
 result[i].kodeord=e.kodeord;
 result[i].sensor=e.sensor;
