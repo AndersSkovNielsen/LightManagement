@@ -27,6 +27,8 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "axios-jsonp": "^1.0.2",
+    "require": "^2.4.20"
   }
 }
