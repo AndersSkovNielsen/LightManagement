@@ -21,7 +21,6 @@ function tilføjFunction(): void{
 
   let errorMessage: HTMLDivElement = <HTMLDivElement> document.getElementById("ErrorMessage");
 
-
   let tilføjID: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjID");
   let tilføjName: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjName");
   let tilføjKode: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjKode");
@@ -34,7 +33,7 @@ function tilføjFunction(): void{
   console.log(navn);
   console.log(kode);
 
-  //if (AllowPost(id) == true)
+  //if (AllowAssist(id) == true)
   //{
     axios.post(uri, 
       {
@@ -67,7 +66,7 @@ function fjernFunction(): void
   })
 }
 
-function AllowPost(id: number): any
+function AllowAssist(id: number): any
 {
   axios.get(uri + id)
   .then(function(response)
