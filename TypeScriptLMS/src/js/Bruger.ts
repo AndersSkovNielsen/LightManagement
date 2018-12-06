@@ -33,8 +33,8 @@ function tilføjFunction(): void{
   console.log(navn);
   console.log(kode);
 
-  //if (AllowAssist(id) == true)
-  //{
+  if (AllowAssist(id) == true)
+  {
     axios.post(uri, 
       {
           Id: id,
@@ -46,12 +46,12 @@ function tilføjFunction(): void{
           console.log(response.status);
       });
   }
-  //else
-  //{
-  //  errorMessage.innerHTML = "ID allerede i brug. Vælg et andet.";
-  //}
+  else
+  {
+    errorMessage.innerHTML = "ID allerede i brug. Vælg et andet.";
+  }
 
-//}
+}
 
 function fjernFunction(): void
 {
@@ -74,11 +74,11 @@ function AllowAssist(id: number): any
     console.log(response.data);
     console.log(response.status);
 
-    if (response.status == 200)
+    if (response.status === 200)
     {
       return false;
     }
     else
-    return true
+    return true;
   })
 }

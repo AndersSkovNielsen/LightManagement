@@ -6,6 +6,7 @@
     } from "../../node_modules/axios/index";
     import "./Login";
     import "./Bruger";
+    import "./Hovedmenu";
     import {hentDato} from "./Clock";
 
     //Liste kode
