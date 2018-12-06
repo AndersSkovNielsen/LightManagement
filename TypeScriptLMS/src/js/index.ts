@@ -22,6 +22,7 @@
     {
     elements[i].addEventListener("click", function (): void 
     {
+        console.log("click");
          hentDato(); //hvorfor virker dette først ved 2. klik på listen?
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
