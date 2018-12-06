@@ -33,7 +33,7 @@ function tilføjFunction(): void{
   console.log(navn);
   console.log(kode);
 
-  if (AllowAssist(id) == true)
+  if (AllowAssist(id) == 0)
   {
     axios.post(uri, 
       {
@@ -66,7 +66,7 @@ function fjernFunction(): void
   })
 }
 
-function AllowAssist(id: number): any
+function AllowAssist(id: number): number
 {
   axios.get(uri + id)
   .then(function(response)
@@ -74,11 +74,11 @@ function AllowAssist(id: number): any
     console.log(response.data);
     console.log(response.status);
 
-    if (response.status == 200)
+    if (response.status != 200)
     {
-      return false;
+      return 1;
     }
-    else
-    return true;
+    
   })
+  return 0;
 }
