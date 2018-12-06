@@ -101,3 +101,12 @@
     console.log("Hovedmenu er kaldt")
     window.location.href = "Hovedmenu.htm";
     }
+
+    let settingsButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Settings");
+    settingsButton.addEventListener("click", SettingsKnap);
+
+    function SettingsKnap(): void
+    {
+    console.log("Indstillinger er kaldt")
+    window.location.href = "Indstillinger.htm";
+    }
