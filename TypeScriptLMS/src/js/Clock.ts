@@ -30,7 +30,7 @@ console.log (raw.slice(1,11))
 
 //date=  raw //raw.slice(1,11);
 year= raw.slice(1,5)
-month= raw.slice (7,9)
+month= raw.slice (6,8)
 day=raw.slice(9,11)
 time= raw.slice(12,17)
 weekDay= response.data.dayOfTheWeek;
