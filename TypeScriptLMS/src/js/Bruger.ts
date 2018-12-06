@@ -74,7 +74,7 @@ function AllowAssist(id: number): any
     console.log(response.data);
     console.log(response.status);
 
-    if (response.status === 200)
+    if (response.status == 200)
     {
       return false;
     }
