@@ -77,10 +77,13 @@ function AxiosData (response:AxiosResponse):void
     //En function som sammenligner den nuværende bruger, som bliver ændret til det der skrives ind på siden.
     function sammenlign(): void
     {
+        console.log(result.length)
         console.log("sammenlign begyndt")
+
         result.forEach(element => 
         {
-            console.log("loop begyndt")
+            
+            console.log("loop begyndt"+element)
             //if(String(LoginNavn) == element.brugernavn)
             //{
             //    if(String(Kodeord) == element.kodeord)
