@@ -22,6 +22,7 @@
     {
     elements[i].addEventListener("click", function (): void 
     {
+        console.log("click");
          hentDato(); //hvorfor virker dette først ved 2. klik på listen?
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
@@ -100,4 +101,13 @@
     {
     console.log("Hovedmenu er kaldt")
     window.location.href = "Hovedmenu.htm";
+    }
+
+    let settingsButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Settings");
+    settingsButton.addEventListener("click", SettingsKnap);
+
+    function SettingsKnap(): void
+    {
+    console.log("Indstillinger er kaldt")
+    window.location.href = "Indstillinger.htm";
     }
