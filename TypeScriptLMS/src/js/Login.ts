@@ -19,7 +19,7 @@ interface IPost {
     sensor: null;
 }
 
-let result: IPost[] = new Array(30); //hvordan erklæres array?? //YATA!
+let result: IPost[] = new Array(30); 
 
 function AxiosData (response:AxiosResponse):void
 {
