@@ -8,8 +8,8 @@ let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("conte
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
 let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginKodeord");
 let ID: HTMLInputElement = <HTMLInputElement>document.getElementById("theId");
-let Bruger: string = "";
-let Login: string = "";
+//let Bruger: string = "";
+//let Login: string = "";
 
 interface IPost {
     
@@ -29,8 +29,8 @@ function AxiosData (response:AxiosResponse):void
 
             result[i].brugernavn=JSON.stringify(e.brugernavn);
             result[i].id=e.id;
-            result[i].kodeord=e.kodeord;
-            //result[i].sensor=e.sensor;
+            result[i].kodeord=JSON.stringify(e.kodeord);
+            result[i].sensor=e.sensor;
             i=i+1;
 
 
@@ -48,6 +48,7 @@ function AxiosData (response:AxiosResponse):void
 
 
  axios.get(uri).then(AxiosData).catch()
+ axios.get(uri).then(function(response:AxiosResponse):void{})
      
 
    
@@ -57,7 +58,7 @@ function AxiosData (response:AxiosResponse):void
  function HovedmenuKnap(): void
  {
     sammenlign();
-    console.log(Sammenlign)
+    console.log("bool er:" + Sammenlign)
      if(Sammenlign == true)
     {
         console.log("Hovedmenu side er kaldt")
@@ -72,30 +73,39 @@ function AxiosData (response:AxiosResponse):void
 
 
     
-    //Skaber en boolean so skal checkes for true eller false for adgang til næste side.
+    //Skaber en boolean som skal checkes for true eller false for adgang til næste side.
     let Sammenlign: boolean = false;
     //En function som sammenligner den nuværende bruger, som bliver ændret til det der skrives ind på siden.
     function sammenlign(): void
     {
         console.log(result.length)
-        console.log("sammenlign begyndt")
+        console.log("sammenlign function begyndt")
+        console.log(result[2].brugernavn.toString())
 
-        result.forEach(element => 
+
+        for(let id = 0; id<result.length;id++)
         {
-            
-            console.log("loop begyndt"+element)
-            //if(String(LoginNavn) == element.brugernavn)
-            //{
-            //    if(String(Kodeord) == element.kodeord)
-            //    Sammenlign = true;         
-            //    stop();
-           // }
-           if(Login == Bruger)
-           {
-               console.log(Login + Bruger)
-               Sammenlign = true;
-           }
-        });
+            console.log("loop begyndt" + String(LoginNavn.value))
+            console.log(String(result[1]))
+            if(LoginNavn.value.toString() == result[id].brugernavn.toString())
+            {
+                console.log(String(result[id].brugernavn))
+                if(String(Kodeord.value) == result[id].kodeord)
+                {
+                    console.log("ende af loop begyndt " + Kodeord.value)
+                    Sammenlign = true;   
+                    stop();
+                }
+                
+            }
+           //if(Login == Bruger)
+           //{
+           //    console.log(Login + Bruger)
+           //    Sammenlign = true;
+           //}
+        }
+
+        
     }
     //skaber button element der føre tilbage til index siden
     let MenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Index");
