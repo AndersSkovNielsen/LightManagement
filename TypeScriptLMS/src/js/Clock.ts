@@ -60,10 +60,14 @@ function clockNewYearsEveTest():void
     minute=0;
     weekDay="Monday";
 
+    timeString=weekDay +" "+ day + "/"+month+"/"+year+ " "+hour+":0"+minute +" CET";
+
+    console.log ("new years eve test value before correction:" +timeString )
+
     cetClockcorrection(hour)
 
-    timeString=weekDay +" "+ day + "/"+month+"/"+year+ " "+hour+":"+minute +" CET";
-    console.log ("new years eve test:"+ timeString)
+    timeString=weekDay +" "+ day + "/"+month+"/"+year+ " "+hour+"0:0"+minute +" CET";
+    console.log ("new years eve test after correction:"+ timeString)
    
     }
     
@@ -74,6 +78,7 @@ function cetClockcorrection(h:number):void
 {if(hour>23)
     {
     hour=0;
+    hour
     day=day+1;
     if(weekDay=="Monday"){weekDay="Tuesday";}
     else if(weekDay=="Tuesday"){weekDay="Wednesday";}
