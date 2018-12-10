@@ -118,6 +118,7 @@ function AxiosData (response:AxiosResponse):void
            //    console.log(Login + Bruger)
            //    Sammenlign = true;
            //}
+           //
         }
 
         
