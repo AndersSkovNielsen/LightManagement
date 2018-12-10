@@ -19,16 +19,20 @@ interface IPost {
     sensor: null;
 }
 
+let list: object[] = [];
+//Dette array, eller dets objecter, kan ikke indlæses. "Brugernavn" er undefined.
 let result: IPost[] = new Array(30); 
+//let result: IPost[] = []; 
 
 function AxiosData (response:AxiosResponse):void
 {
+    console.log("axios data")
     let i:number=0;
     response.data.forEach(e => 
         {
-
-            result[i].brugernavn=JSON.stringify(e.brugernavn);
+            console.log("Axios data loop")
             result[i].id=e.id;
+            result[i].brugernavn=JSON.stringify(e.brugernavn);
             result[i].kodeord=JSON.stringify(e.kodeord);
             result[i].sensor=e.sensor;
             i=i+1;
@@ -38,10 +42,28 @@ function AxiosData (response:AxiosResponse):void
         
         }
     );
-    
-   
 }
-
+//function AxiosData (response:AxiosResponse):void
+//{
+//    let i:number=0;
+//    //for(let i = 0; i<result.length;i++)
+//    response.data.array.forEach(e => {
+//        {
+//            result[i].id=e.id;
+//            result[i].brugernavn=JSON.stringify(e.brugernavn);
+//            result[i].kodeord=JSON.stringify(e.kodeord);
+//            result[i].sensor=e.sensor;
+//            i=i+1;
+//
+//
+//
+//        
+//        }
+//        
+//    });
+//        
+//    
+//}
 
 
 
@@ -58,6 +80,7 @@ function AxiosData (response:AxiosResponse):void
  function HovedmenuKnap(): void
  {
     sammenlign();
+    
     console.log("bool er:" + Sammenlign)
      if(Sammenlign == true)
     {
@@ -78,8 +101,10 @@ function AxiosData (response:AxiosResponse):void
     //En function som sammenligner den nuværende bruger, som bliver ændret til det der skrives ind på siden.
     function sammenlign(): void
     {
+        axios.get(uri).then(AxiosData).catch()
         console.log(result.length)
         console.log("sammenlign function begyndt")
+        //Uncaught TypeError: Cannot read property 'brugernavn' of undefined
         console.log(result[2].brugernavn.toString())
 
 
