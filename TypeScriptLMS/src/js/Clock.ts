@@ -48,7 +48,7 @@ let timeString:string;
 
 function clockNewYearsEveTest():void
 {
-     result= axios.get(uri).then(function (response: AxiosResponse): void
+    result= axios.get(uri).then(function (response: AxiosResponse): void
     { 
     raw= JSON.stringify (response.data.currentDateTime);
     console.log (raw.slice(1,11));
@@ -62,16 +62,13 @@ function clockNewYearsEveTest():void
 
     timeString=weekDay +" "+ day + "/"+month+"/"+year+ " "+hour+":0"+minute +" CET";
 
-    console.log ("new years eve test value before correction:" +timeString )
+    console.log("new years eve test value before correction:" + timeString);
 
-    cetClockcorrection(hour)
+    cetClockcorrection(hour);
 
     timeString=weekDay +" "+ day + "/"+month+"/"+year+ " "+hour+"0:0"+minute +" CET";
-    console.log ("new years eve test after correction:"+ timeString)
-   
-    }
-    
-    
+    console.log("new years eve test after correction:"+ timeString);
+    });
 }
 
 function cetClockcorrection(h:number):void
