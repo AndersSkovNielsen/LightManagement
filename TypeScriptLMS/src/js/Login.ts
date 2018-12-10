@@ -21,27 +21,15 @@ interface IPost {
 
 let list: object[] = [];
 //Dette array, eller dets objecter, kan ikke indlæses. "Brugernavn" er undefined.
-let result: IPost[] = new Array(30); 
-//let result: IPost[] = []; 
+//let result: IPost[] = new Array(30); 
+let result: IPost[] = []; 
 
 function AxiosData (response:AxiosResponse):void
 {
     console.log("axios data")
     let i:number=0;
-    response.data.forEach(e => 
-        {
-            console.log("Axios data loop")
-            result[i].id=e.id;
-            result[i].brugernavn=JSON.stringify(e.brugernavn);
-            result[i].kodeord=JSON.stringify(e.kodeord);
-            result[i].sensor=e.sensor;
-            i=i+1;
+    result = response.data;
 
-
-
-        
-        }
-    );
 }
 //function AxiosData (response:AxiosResponse):void
 //{
@@ -79,6 +67,8 @@ function AxiosData (response:AxiosResponse):void
 
  function HovedmenuKnap(): void
  {
+     console.log("ebbes output:");
+     console.log(JSON.stringify(result));
     sammenlign();
     
     console.log("bool er:" + Sammenlign)
@@ -101,7 +91,7 @@ function AxiosData (response:AxiosResponse):void
     //En function som sammenligner den nuværende bruger, som bliver ændret til det der skrives ind på siden.
     function sammenlign(): void
     {
-        axios.get(uri).then(AxiosData).catch()
+        
         console.log(result.length)
         console.log("sammenlign function begyndt")
         //Uncaught TypeError: Cannot read property 'brugernavn' of undefined
