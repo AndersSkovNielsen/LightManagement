@@ -8,7 +8,7 @@ let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
 let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginKodeord");
-let ID: HTMLInputElement = <HTMLInputElement>document.getElementById("theId");
+
 //let Bruger: string = "";
 //let Login: string = "";
 
@@ -43,15 +43,8 @@ function AxiosData (response:AxiosResponse):void
 //            result[i].kodeord=JSON.stringify(e.kodeord);
 //            result[i].sensor=e.sensor;
 //            i=i+1;
-//
-//
-//
-//        
 //        }
-//        
 //    });
-//        
-//    
 //}
 
 
@@ -78,6 +71,10 @@ function AxiosData (response:AxiosResponse):void
         console.log("Hovedmenu side er kaldt")
         window.location.href = "index.htm";
     }
+    else{
+        alert("Forkert brugernavn eller kodeord.");
+    }
+   
 }
         
 
@@ -101,14 +98,12 @@ function AxiosData (response:AxiosResponse):void
 
         for(let id = 0; id<result.length;id++)
         {
-            console.log("loop begyndt" + String(LoginNavn.value))
             console.log(String(result[1]))
             if(LoginNavn.value.toString() == result[id].brugernavn.toString())
             {
                 console.log(String(result[id].brugernavn))
                 if(String(Kodeord.value) == result[id].kodeord)
                 {
-                    console.log("ende af loop begyndt " + Kodeord.value)
                     Sammenlign = true;   
                     stop();
                 }
