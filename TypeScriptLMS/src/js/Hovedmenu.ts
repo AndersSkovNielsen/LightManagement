@@ -1,7 +1,6 @@
-    //Udkommentering af aEL gør Brugerside knapper ubrugelige... Le Was?
-    
+
     let brugerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Bruger");
-    //brugerButton.addEventListener("click", BrugerKnap);
+    brugerButton.addEventListener("click", BrugerKnap);
 
     function BrugerKnap(): void
     {
@@ -10,7 +9,7 @@
     }
 
     let indstillingerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Indstillinger");
-    //indstillingerButton.addEventListener("click", IndstillingerKnap);
+    indstillingerButton.addEventListener("click", IndstillingerKnap);
 
     function IndstillingerKnap(): void
     {

@@ -1,3 +1,9 @@
+export interface Sensor
+{
+    sensorTekst:string;
+}
+
+
 let i = document.querySelector('input');
 let o = document.querySelector('output');
 

@@ -6,7 +6,7 @@
     } from "../../node_modules/axios/index";
     import "./Login";
     import "./Bruger";
-    import "./Hovedmenu";
+    import {Sensor} from "./Indstillinger";
     import {hentDato} from "./Clock";
 
     //Liste kode

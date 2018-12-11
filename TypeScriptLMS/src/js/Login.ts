@@ -3,6 +3,7 @@ import axios,
 AxiosResponse,
 AxiosError
 } from "../../node_modules/axios/index";
+
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
