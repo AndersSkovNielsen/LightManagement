@@ -6,7 +6,6 @@
     } from "../../node_modules/axios/index";
     import "./Login";
     import "./Bruger";
-    import "./Hovedmenu";
     import {hentDato} from "./Clock";
 
     //Liste kode
@@ -107,6 +106,48 @@
     settingsButton.addEventListener("click", SettingsKnap);
 
     function SettingsKnap(): void
+    {
+    console.log("Indstillinger er kaldt")
+    window.location.href = "Indstillinger.htm";
+    }
+
+    //Indstillinger
+
+    
+
+    //Eksperiment - Indstillinger slider
+
+    let i = document.querySelector('input');
+    let o = document.querySelector('output');
+
+    let slider: HTMLProgressElement = <HTMLProgressElement> document.getElementById("myRange");
+    let output =  document.getElementById("demo");
+    output.innerHTML = slider.value.toString(); // Display the default slider value
+
+
+
+    // Update the current slider value (each time you drag the slider handle)
+    function slideSet() {
+        console.log(i.value)
+        o.innerHTML = i.value;
+    }
+
+    slider.addEventListener("scroll", slideSet)
+
+    //Hovedmenu Knapper, addEventListener virker ikke
+    let brugerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Bruger");
+    brugerButton.addEventListener("click", BrugerKnap);
+
+    function BrugerKnap(): void
+    {
+        console.log("Brugerside er kaldt")
+        window.location.href = "index.htm";
+    }
+
+    let indstillingerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Indstillinger");
+    indstillingerButton.addEventListener("click", IndstillingerKnap);
+
+    function IndstillingerKnap(): void
     {
     console.log("Indstillinger er kaldt")
     window.location.href = "Indstillinger.htm";
