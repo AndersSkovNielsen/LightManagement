@@ -8,6 +8,11 @@
     import "./Bruger";
     import {hentDato} from "./Clock";
 
+    let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
+    let uri2: string = "https://ande-easj-rest.azurewebsites.net/api/sensor/";
+
+
+
     //Liste kode
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
     // let i: number;
@@ -35,7 +40,9 @@
     });
     }
 
-    let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
+    
+
+
     let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
     let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
     let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
@@ -113,26 +120,79 @@
 
     //Indstillinger
 
+    interface Sensor {
     
-
-    //Eksperiment - Indstillinger slider
-
-    let i = document.querySelector('input');
-    let o = document.querySelector('output');
-
-    let slider: HTMLProgressElement = <HTMLProgressElement> document.getElementById("myRange");
-    let output =  document.getElementById("demo");
-    output.innerHTML = slider.value.toString(); // Display the default slider value
-
-
-
-    // Update the current slider value (each time you drag the slider handle)
-    function slideSet() {
-        console.log(i.value)
-        o.innerHTML = i.value;
+        id: number;
+        isMoving: string;
+        sensitivity: number;
     }
 
-    slider.addEventListener("scroll", slideSet)
+    let idbutton: HTMLInputElement = <HTMLInputElement> document.getElementById("IDButton");
+    idbutton.addEventListener("click", HentSensor)
+
+    let sensorid: HTMLInputElement = <HTMLInputElement> document.getElementById("SensorID");
+
+    let sensoroutput: HTMLOutputElement = <HTMLOutputElement> document.getElementById("SensorOutput");
+
+    let valgtSensor: Sensor = null;
+
+    function HentSensor():void
+    {
+        console.log("Test");
+        let idSensor: number = Number(sensorid.value);
+
+        axios.get(uri2 + idSensor)
+            .then(function (response: AxiosResponse): void 
+        {
+            console.log(response.data);
+            valgtSensor = response.data;
+            console.log(valgtSensor)
+            sensoroutput.innerHTML = "ID: " + response.data.id + " - Sensitivitetsniveau på: " + response.data.sensitivity;
+        });
+    }
+
+    //Indstillinger - Sensitivitetsstyring
+    let upbutton: HTMLInputElement = <HTMLInputElement> document.getElementById("SenseUpButton");
+    upbutton.addEventListener("click", SensivititetOp)
+
+    let downbutton: HTMLInputElement = <HTMLInputElement> document.getElementById("SenseDownButton");
+    downbutton.addEventListener("click", SensivititetNed)
+
+    function SensivititetOp():void
+    {
+        console.log("Sensor: " + valgtSensor.sensitivity)
+        valgtSensor.sensitivity = valgtSensor.sensitivity - 0.3;
+        console.log("Sensor /m ny værdi: " + valgtSensor.sensitivity)
+
+        axios.put(uri2 + valgtSensor.id,
+            {
+            Id: valgtSensor.id,
+            IsMoving: valgtSensor.isMoving,  
+            Sensitivity: valgtSensor.sensitivity
+            }).then(function (response: AxiosResponse): void
+            {
+                console.log(response.data);
+                sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity;
+            })
+    }
+
+    function SensivititetNed():void
+    {
+        console.log("Sensor: " + valgtSensor.sensitivity)
+        valgtSensor.sensitivity = valgtSensor.sensitivity + 0.3;
+        console.log("Sensor /m ny værdi: " + valgtSensor.sensitivity)
+
+        axios.put(uri2 + valgtSensor.id,
+            {
+            Id: valgtSensor.id,
+            IsMoving: valgtSensor.isMoving,  
+            Sensitivity: valgtSensor.sensitivity
+            }).then(function (response: AxiosResponse): void
+            {
+                console.log(response.data);
+                sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity;
+            })
+    }
 
     //Hovedmenu Knapper, addEventListener virker ikke
     let brugerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Bruger");

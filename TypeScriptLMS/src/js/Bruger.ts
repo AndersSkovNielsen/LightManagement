@@ -1,8 +1,9 @@
 //import axios, { AxiosPromise } from 'axios';
-import axios, {
+import axios, 
+    {
     AxiosResponse,
     AxiosError
-} from "axios";
+    } from "../../node_modules/axios/index";
 
 let uri: string = "http://ande-easj-rest.azurewebsites.net/api/bruger/";
 
