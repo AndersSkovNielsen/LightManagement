@@ -42,7 +42,7 @@
         let list: string = "";
         let i: number;
 
-            for(i=0; i<10; i++)
+            for(i=0; i<response.data.length; i++)
             {
                 list = list + "ID: " + response.data[i].id + " = " + response.data[i].brugernavn + "<br/>";
             }
