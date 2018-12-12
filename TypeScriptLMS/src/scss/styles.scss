@@ -1,5 +1,24 @@
 $fontColor: #0091aa;
 $colorHeading: #be4a14;
+*
+{
+    box-sizing: border-box;
+}
+
+.bruger
+{
+    width: 40%;
+    float: left;
+    padding: 5px;
+}
+
+.indstillinger 
+{
+    width: 40%;
+    float: left;
+    padding: 5px;
+}
+
 #content  // div with id: content
 {
     color: $fontColor;
@@ -19,7 +38,7 @@ h1{
     color: white;
     cursor: pointer;
     padding: 18px;
-    width: 100%;
+    width: 50%;
     border: none;
     text-align: left;
     outline: none;
@@ -37,4 +56,5 @@ h1{
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
+    width: 50%;
   }
