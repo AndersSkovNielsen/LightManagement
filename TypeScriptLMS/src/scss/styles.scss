@@ -1,5 +1,24 @@
 $fontColor: #0091aa;
 $colorHeading: #be4a14;
+*
+{
+    box-sizing: border-box;
+}
+
+.bruger
+{
+    width: 40%;
+    float: left;
+    padding: 5px;
+}
+
+.indstillinger 
+{
+    width: 40%;
+    float: left;
+    padding: 5px;
+}
+
 #content  // div with id: content
 {
     color: $fontColor;
