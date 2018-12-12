@@ -9,9 +9,6 @@ let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("conte
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
 let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginKodeord");
 
-//let Bruger: string = "";
-//let Login: string = "";
-
 interface IPost {
     
     id: number;
@@ -20,11 +17,9 @@ interface IPost {
     sensor: null;
 }
 
-let list: object[] = [];
-//Dette array, eller dets objecter, kan ikke indlæses. "Brugernavn" er undefined.
-//let result: IPost[] = new Array(30); 
+//skaber en tom liste, dette var tidligere et array med 30 objecter.
 let result: IPost[] = []; 
-
+//Skaber en række af objecter der sættes ind i "result" listen.
 function AxiosData (response:AxiosResponse):void
 {
     console.log("axios data")
@@ -32,6 +27,8 @@ function AxiosData (response:AxiosResponse):void
     result = response.data;
 
 }
+//Nedenunder er der den tidligere version af "AxiosData", som skulle lægge objecter fra resten over i "result" listen.
+///////////
 //function AxiosData (response:AxiosResponse):void
 //{
 //    let i:number=0;
@@ -46,11 +43,11 @@ function AxiosData (response:AxiosResponse):void
 //        }
 //    });
 //}
+///////////
 
 
 
-
-
+//starter axios funktionen og tildeler den REST-objecterne.
  axios.get(uri).then(AxiosData).catch()
  axios.get(uri).then(function(response:AxiosResponse):void{})
      
@@ -58,24 +55,22 @@ function AxiosData (response:AxiosResponse):void
    
  
 
-
+//Function der bliver kladt, efter boolen er blevet bestemt i "Sammenlign" function.
+//skaber en alert, hvis boolen "sammenlign" viser sig at være "false".
  function HovedmenuKnap(): void
  {
-     console.log("ebbes output:");
-     console.log(JSON.stringify(result));
+     console.log("Hovedmenu Funktion");
     sammenlign();
     
     console.log("bool er:" + Sammenlign)
      if(Sammenlign == true)
     {
-        console.log("Hovedmenu side er kaldt")
         window.location.href = "index.htm";
     }
     else{
         alert("Forkert brugernavn eller kodeord.");
     }
-   
-}
+ }
         
 
  
@@ -89,13 +84,8 @@ function AxiosData (response:AxiosResponse):void
     //En function som sammenligner den nuværende bruger, som bliver ændret til det der skrives ind på siden.
     function sammenlign(): void
     {
-        
         console.log(result.length)
         console.log("sammenlign function begyndt")
-        //Uncaught TypeError: Cannot read property 'brugernavn' of undefined
-        console.log(result[2].brugernavn.toString())
-
-
         for(let id = 0; id<result.length;id++)
         {
             console.log(String(result[1]))
@@ -107,17 +97,8 @@ function AxiosData (response:AxiosResponse):void
                     Sammenlign = true;   
                     stop();
                 }
-                
             }
-           //if(Login == Bruger)
-           //{
-           //    console.log(Login + Bruger)
-           //    Sammenlign = true;
-           //}
-           //
-        }
-
-        
+        }        
     }
     //skaber button element der føre tilbage til index siden
     let MenuButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Index");
@@ -131,7 +112,7 @@ function AxiosData (response:AxiosResponse):void
 
 
 
-
+//-------------------------------------------------
 //ikke god kode
 
    // function ÆndreBruger(): string 
