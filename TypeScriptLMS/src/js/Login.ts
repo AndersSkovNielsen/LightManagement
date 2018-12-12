@@ -8,8 +8,9 @@ let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
 let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginKodeord");
-import BrugerInfo from "./index";
 
+//let Bruger = "";
+//export default Bruger;
 //eksperimental kode, kan slettes. gør intet.
 var responseHTML = document.createElement("body");
 
@@ -75,7 +76,6 @@ function AxiosData (response:AxiosResponse):void
      if(Sammenlign == true)
     {
         //Bruger = String(LoginNavn);
-        //BrugerInfo.innerHTML = "test";
         window.location.href = "index.htm";
         
     }

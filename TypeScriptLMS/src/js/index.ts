@@ -7,9 +7,8 @@
     import "./Login";
     import "./Bruger";
     import {hentDato} from "./Clock";
+    //import Bruger from "./Login";
     let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
-
-    export default BrugerInfo;
     let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
     let uri2: string = "https://ande-easj-rest.azurewebsites.net/api/sensor/";
 
