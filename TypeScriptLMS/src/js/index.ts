@@ -1,4 +1,4 @@
-//import axios, { AxiosPromise } from 'axios';
+
     import axios, 
     {
     AxiosResponse,
@@ -7,7 +7,6 @@
     import "./Login";
     import "./Bruger";
     import {hentDato} from "./Clock";
-    import "index.htm";
     let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
 
     export default BrugerInfo;
