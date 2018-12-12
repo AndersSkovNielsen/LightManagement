@@ -33,9 +33,6 @@
     });
     }
 
-    
-
-
     let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
     let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
     let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
@@ -84,8 +81,6 @@
         }
     }
 
-    
-
     //Indstillinger
 
     interface Sensor {
@@ -106,15 +101,12 @@
 
     function HentSensor():void
     {
-        console.log("Test");
         let idSensor: number = Number(sensorid.value);
 
         axios.get(uri2 + idSensor)
             .then(function (response: AxiosResponse): void 
         {
-            console.log(response.data);
             valgtSensor = response.data;
-            console.log(valgtSensor)
             sensoroutput.innerHTML = "ID: " + response.data.id + " - Sensitivitetsniveau på: " + response.data.sensitivity;
         });
     }
@@ -128,9 +120,7 @@
 
     function SensivititetOp():void
     {
-        console.log("Sensor: " + valgtSensor.sensitivity)
         valgtSensor.sensitivity = valgtSensor.sensitivity - 0.3;
-        console.log("Sensor /m ny værdi: " + valgtSensor.sensitivity)
 
         axios.put(uri2 + valgtSensor.id,
             {
@@ -139,16 +129,13 @@
             Sensitivity: valgtSensor.sensitivity
             }).then(function (response: AxiosResponse): void
             {
-                console.log(response.data);
                 sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity;
             })
     }
 
     function SensivititetNed():void
     {
-        console.log("Sensor: " + valgtSensor.sensitivity)
         valgtSensor.sensitivity = valgtSensor.sensitivity + 0.3;
-        console.log("Sensor /m ny værdi: " + valgtSensor.sensitivity)
 
         axios.put(uri2 + valgtSensor.id,
             {
@@ -157,7 +144,6 @@
             Sensitivity: valgtSensor.sensitivity
             }).then(function (response: AxiosResponse): void
             {
-                console.log(response.data);
                 sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity;
             })
     }

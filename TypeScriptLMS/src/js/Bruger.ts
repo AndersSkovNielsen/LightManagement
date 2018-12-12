@@ -38,17 +38,12 @@ function tilføjFunction(): void{
       })
       .then(function(response) 
       {
-          console.log(response.data);
-          console.log(response.status);
-
           if (response.data != true)
           {
-            console.log("Error: Tilføj");
             errorMessage.innerHTML = "ID allerede i brug. Vælg et andet.";
           }
           else
           {
-            console.log("Succes: Tilføj");
             errorMessage.innerHTML = "Bruger " + id + " er tilføjet.";
           }
       });
@@ -62,17 +57,12 @@ function fjernFunction(): void
   axios.delete(uri + id)
   .then(function(response)
   {
-    console.log(response.data); // ex.: { user: 'Your User'}
-    console.log(response.status); // ex.: 200
-
     if (response.data != true)
       {
-        console.log("Error: Fjern");
         errorMessage.innerHTML = "ID findes ikke. Vælg et andet.";
       }
       else
       {
-        console.log("Succes: Fjern");
         errorMessage.innerHTML = "Bruger " + id + " er fjernet.";
       }
   })
