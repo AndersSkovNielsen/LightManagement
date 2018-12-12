@@ -15,9 +15,9 @@
     let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
     let uri2: string = "https://ande-easj-rest.azurewebsites.net/api/sensor/";
     import {displayBrugernavn} from "./Login";
-    displayBrugernavn();
-   
+
     
+   
 
 
     //Liste kode
@@ -33,6 +33,7 @@
     {
         console.log("click");
          hentDato();
+         displayBrugernavn();
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
         if (content.style.maxHeight) 

@@ -3,23 +3,23 @@ import axios,
 AxiosResponse,
 AxiosError
 } from "../../node_modules/axios/index";
-
+let Bruger: string;
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
 let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginKodeord");
-let Bruger: string  = LoginNavn.value;
+
 //export default Bruger;
 //eksperimental kode, kan slettes. gør intet.
 var responseHTML = document.createElement("body");
 let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
+
 export function displayBrugernavn(): void
 {
+    console.log(Bruger);
     //Bruger = LoginNavn.value;
     BrugerInfo.innerText = Bruger;
-    
 }
-
 
 //let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
 
@@ -77,12 +77,14 @@ function AxiosData (response:AxiosResponse):void
      console.log("Hovedmenu Funktion");
     sammenlign();
     
+    
+    Bruger = LoginNavn.value.toString();
+
     console.log("bool er:" + Sammenlign)
      if(Sammenlign == true)
     {
         //let bruger; default string = LoginNavn.value
         console.log(Bruger);
-        
         window.location.href = "index.htm";
         console.log(Bruger);
         
