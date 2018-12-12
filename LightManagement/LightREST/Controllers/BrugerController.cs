@@ -45,7 +45,7 @@ namespace LightREST.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public Bruger SletBruger(int id)
+        public bool SletBruger(int id)
         {
             return manager.FjernBruger(id);
         }

@@ -7,6 +7,8 @@ import axios,
 
 let uri: string = "http://ande-easj-rest.azurewebsites.net/api/bruger/";
 
+let errorMessage: HTMLDivElement = <HTMLDivElement> document.getElementById("ErrorMessage");
+
 //Button references
 let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");
 
@@ -20,8 +22,6 @@ fjernButton.addEventListener("click", fjernFunction)
 //Button void functions
 function tilføjFunction(): void{
 
-  let errorMessage: HTMLDivElement = <HTMLDivElement> document.getElementById("ErrorMessage");
-
   let tilføjID: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjID");
   let tilføjName: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjName");
   let tilføjKode: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjKode");
@@ -30,12 +30,6 @@ function tilføjFunction(): void{
   let navn: string = String(tilføjName.value);
   let kode: string = String(tilføjKode.value);
 
-  console.log(id)
-  console.log(navn);
-  console.log(kode);
-
-  if (AllowAssist(id) == 0)
-  {
     axios.post(uri, 
       {
           Id: id,
@@ -44,42 +38,42 @@ function tilføjFunction(): void{
       })
       .then(function(response) 
       {
+          console.log(response.data);
           console.log(response.status);
-      });
-  }
-  else
-  {
-    errorMessage.innerHTML = "ID allerede i brug. Vælg et andet.";
-  }
 
+          if (response.data != true)
+          {
+            console.log("Error: Tilføj");
+            errorMessage.innerHTML = "ID allerede i brug. Vælg et andet.";
+          }
+          else
+          {
+            console.log("Succes: Tilføj");
+            errorMessage.innerHTML = "Bruger " + id + " er tilføjet.";
+          }
+      });
 }
 
 function fjernFunction(): void
 {
-
   let sletBruger: HTMLInputElement = <HTMLInputElement> document.getElementById("SletBruger");
   let id: number = Number(sletBruger.value);
 
   axios.delete(uri + id)
-  .then(function(response){
-  console.log(response.data); // ex.: { user: 'Your User'}
-  console.log(response.status); // ex.: 200
-  })
-}
-
-function AllowAssist(id: number): number
-{
-  axios.get(uri + id)
   .then(function(response)
   {
-    console.log(response.data);
-    console.log(response.status);
+    console.log(response.data); // ex.: { user: 'Your User'}
+    console.log(response.status); // ex.: 200
 
-    if (response.status != 200)
-    {
-      return 1;
-    }
-    
+    if (response.data != true)
+      {
+        console.log("Error: Fjern");
+        errorMessage.innerHTML = "ID findes ikke. Vælg et andet.";
+      }
+      else
+      {
+        console.log("Succes: Fjern");
+        errorMessage.innerHTML = "Bruger " + id + " er fjernet.";
+      }
   })
-  return 0;
 }

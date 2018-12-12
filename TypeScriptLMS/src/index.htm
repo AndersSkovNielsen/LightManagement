@@ -1,5 +1,22 @@
 <!doctype html>
 <html lang="en-US">
+  <style>
+    * {
+      box-sizing: border-box;
+      }
+
+      .bruger {
+        width: 40%;
+        float: left;
+        padding: 5px;
+      }
+
+      .indstillinger {
+        width: 40%;
+        float: left;
+        padding: 5px;
+      }
+  </style>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Coding Template</title>
@@ -7,9 +24,18 @@
 </head>
 
 <body>
-<div id="clock">"dsdsdsd"</div>
+<div id="clock">Åben listen for at vise tid og dato.
 
-  <h2>Bruger Liste</h2>
+</div>
+
+<div>
+    <button id="LoginSideButton">Login</button>
+    <button id="Tilbage">Hovedmenu</button>
+    <button id="Settings">Indstillinger</button>
+</div>    
+
+<div class="bruger">
+  <h1>Bruger Administration</h1>
 
   <!--skaber en collapsible med listen af Brugere --> 
   <button class="collapsible">The Complete List</button>
@@ -17,14 +43,15 @@
     <div id="content1"></div>
   </div>  
   
-  <h2>By Specific ID</h2> 
+  <h2>Hent</h2> 
   <input type="text"   id="InputConverter" placeholder= "ID for specific item.">
   <button id="GetIdButton" >input</button>
 
   <div id="content2"></div>
   <output type="text" id="Output"></output>
 
-  <h1>Administration</h1>
+  <h2>Tilføj/Fjern</h2>
+
   <p>
       <input type="button" value="Tilføj" id="TilføjButton">
       <input type="text" placeholder="Bruger ID (Tal)" id="TilføjID">
@@ -38,11 +65,9 @@
       <input type="button" value="Fjern" id="FjernButton">
       <input type="text" placeholder="Bruger ID (Tal)" id="SletBruger">
   </p>
+</div>
 
- <button id="LoginSideButton">Login</button>
- <button id="Tilbage">Hovedmenu</button>
- <button id="Settings">Indstillinger</button>
-
+<div class="indstillinger">
   <h1>Indstillinger</h1>
   
   <h2>Vælg sensor</h2> 
@@ -56,12 +81,10 @@
 
   <button id="SenseUpButton">Sense (+)</button>
   <button id="SenseDownButton">Sense (-)</button>
+</div>
 
   <script src="bundle.js"></script>
 
 </body>
-
-
-
 
 </html>

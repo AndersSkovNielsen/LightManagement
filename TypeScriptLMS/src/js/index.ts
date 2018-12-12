@@ -11,23 +11,16 @@
     let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
     let uri2: string = "https://ande-easj-rest.azurewebsites.net/api/sensor/";
 
-
-
     //Liste kode
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
     // let i: number;
-
-
-
-
-
 
     for (let i: number = 0; i < elements.length; i++) 
     {
     elements[i].addEventListener("click", function (): void 
     {
         console.log("click");
-         hentDato(); //hvorfor virker dette først ved 2. klik på listen?
+         hentDato();
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
         if (content.style.maxHeight) 
@@ -54,7 +47,7 @@
 
             for(i=0; i<10; i++)
             {
-                list = list + response.data[i].id + " - " + response.data[i].brugernavn + " - " + response.data[i].kodeord + "<br/>";
+                list = list + "ID: " + response.data[i].id + " = " + response.data[i].brugernavn + "<br/>";
             }
         
         elementById.innerHTML = list;
@@ -82,7 +75,7 @@
             axios.get(uri + id)
             .then(function (response: AxiosResponse): void 
         {
-            elementById2.innerHTML = response.data.id + " - " + response.data.brugernavn + " - " + response.data.kodeord
+            elementById2.innerHTML = "ID: " + response.data.id + " = " + response.data.brugernavn
         })
         .catch(function (error: AxiosError): void 
         {
@@ -91,32 +84,7 @@
         }
     }
 
-    let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
-    LoginSideButton.addEventListener("click", LoginSideKnap);
     
-    function LoginSideKnap(): void
-    {
-     console.log("Login side er kaldt")
-     window.location.href = "LoginSide.htm";
-    }
-
-    let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
-    TilbageButton.addEventListener("click", HovedmenuKnap);
-
-    function HovedmenuKnap(): void
-    {
-    console.log("Hovedmenu er kaldt")
-    window.location.href = "Hovedmenu.htm";
-    }
-
-    let settingsButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Settings");
-    settingsButton.addEventListener("click", SettingsKnap);
-
-    function SettingsKnap(): void
-    {
-    console.log("Indstillinger er kaldt")
-    window.location.href = "Indstillinger.htm";
-    }
 
     //Indstillinger
 
@@ -194,20 +162,30 @@
             })
     }
 
-    //Hovedmenu Knapper, addEventListener virker ikke
-    let brugerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Bruger");
-    brugerButton.addEventListener("click", BrugerKnap);
+    //Side navigation
 
-    function BrugerKnap(): void
+    let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
+    LoginSideButton.addEventListener("click", LoginSideKnap);
+
+    function LoginSideKnap(): void
     {
-        console.log("Brugerside er kaldt")
-        window.location.href = "index.htm";
+     console.log("Login side er kaldt")
+     window.location.href = "LoginSide.htm";
     }
 
-    let indstillingerButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Indstillinger");
-    indstillingerButton.addEventListener("click", IndstillingerKnap);
+    let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
+    TilbageButton.addEventListener("click", HovedmenuKnap);
 
-    function IndstillingerKnap(): void
+    function HovedmenuKnap(): void
+    {
+    console.log("Hovedmenu er kaldt")
+    window.location.href = "Hovedmenu.htm";
+    }
+
+    let settingsButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Settings");
+    settingsButton.addEventListener("click", SettingsKnap);
+
+    function SettingsKnap(): void
     {
     console.log("Indstillinger er kaldt")
     window.location.href = "Indstillinger.htm";

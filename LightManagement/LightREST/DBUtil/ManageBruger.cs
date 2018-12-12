@@ -10,7 +10,7 @@ namespace LightREST.DBUtil
     public class ManageBruger
     {
         private string connectionString =
-            @"";
+            @"Server=tcp:ande651p-easj-newdbserver.database.windows.net,1433;Initial Catalog=ande651p-easj-DB;Persist Security Info=False;User ID=asn230791;Password=LMSprojekt3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         /// <summary>
         /// SQL streng til at hente alle rækker i LMSBruger tabellen fra databasen
@@ -77,22 +77,27 @@ namespace LightREST.DBUtil
 
         public bool TilføjBruger(Bruger bruger)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (TilladMetode(bruger.Id) == true)
             {
-                SqlCommand command = new SqlCommand(insertSql, connection);
-                
-                TilføjVærdiBruger(bruger, command);
-
-                command.Connection.Open();
-
-                int noOfRows = command.ExecuteNonQuery();
-
-                if (noOfRows == 1)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return true;
+                    SqlCommand command = new SqlCommand(insertSql, connection);
+
+                    TilføjVærdiBruger(bruger, command);
+
+                    command.Connection.Open();
+
+                    int noOfRows = command.ExecuteNonQuery();
+
+                    if (noOfRows == 1)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
             }
+
+            return false;
         }
 
         public bool OpdaterBruger(int brugerId, Bruger bruger)
@@ -116,14 +121,14 @@ namespace LightREST.DBUtil
             }
         }
 
-        public Bruger FjernBruger(int brugerID)
+        public bool FjernBruger(int brugerID)
         {
-            Bruger opgave = HentEnBruger(brugerID);
-            if (opgave == null)
+            Bruger b = HentEnBruger(brugerID);
+            if (b == null)
             {
-                return null;
+                return false;
             }
-
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(deleteSql, connection);
@@ -135,9 +140,10 @@ namespace LightREST.DBUtil
 
                 if (noOfRows == 1)
                 {
-                    return opgave;
+                    return true;
                 }
-                return null;
+
+                return false;
             }
         }
 
@@ -156,6 +162,18 @@ namespace LightREST.DBUtil
             command.Parameters.AddWithValue("@Id", bruger.Id);
             command.Parameters.AddWithValue("@Brugernavn", bruger.Brugernavn);
             command.Parameters.AddWithValue("@Kodeord", bruger.Kodeord);
+        }
+
+        private bool TilladMetode(int id)
+        {
+            Bruger b = HentEnBruger(id);
+
+            if (b == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
