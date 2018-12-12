@@ -8,6 +8,14 @@ let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
 let LoginNavn: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginNavn");
 let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("LoginKodeord");
+import BrugerInfo from "./index";
+
+//eksperimental kode, kan slettes. gør intet.
+var responseHTML = document.createElement("body");
+
+
+
+//let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
 
 interface IPost {
     
@@ -16,6 +24,7 @@ interface IPost {
     kodeord: string;
     sensor: null;
 }
+
 
 //skaber en tom liste, dette var tidligere et array med 30 objecter.
 let result: IPost[] = []; 
@@ -65,7 +74,10 @@ function AxiosData (response:AxiosResponse):void
     console.log("bool er:" + Sammenlign)
      if(Sammenlign == true)
     {
+        //Bruger = String(LoginNavn);
+        //BrugerInfo.innerHTML = "test";
         window.location.href = "index.htm";
+        
     }
     else{
         alert("Forkert brugernavn eller kodeord.");
