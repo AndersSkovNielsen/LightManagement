@@ -48,5 +48,10 @@ namespace ModelLibrary
             _isMoving = isMoving;
             _sensitivity = sensitivity;
         }
+
+        public override string ToString()
+        {
+            return $"ID: {Id} - Sensitivity: {Sensitivity}";
+        }
     }
 }

@@ -56,5 +56,10 @@ namespace ModelLibrary
             _kodeord = kodeord;
             _sensor = sensor;
         }
+
+        public override string ToString()
+        {
+            return $"ID: {Id} - {Brugernavn}";
+        }
     }
 }
