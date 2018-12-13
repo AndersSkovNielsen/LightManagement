@@ -111,7 +111,7 @@
             .then(function (response: AxiosResponse): void 
         {
             valgtSensor = response.data;
-            sensoroutput.innerHTML = "ID: " + response.data.id + " - Sensitivitetsniveau på: " + response.data.sensitivity;
+            sensoroutput.innerHTML = "ID: " + response.data.id + " - Sensitivitetsniveau på: " + response.data.sensitivity.toFixed(1);
         });
     }
 
