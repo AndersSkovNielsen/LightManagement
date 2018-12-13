@@ -1,8 +1,10 @@
 import axios, { AxiosPromise, AxiosResponse } from  "../../node_modules/axios/index" 
 
-
-let display :HTMLDivElement= <HTMLDivElement> document.getElementById("clock") 
+//3. Part API URI
 let uri:string = "http://worldclockapi.com/api/json/utc/now"
+
+//Element - Display
+let display :HTMLDivElement= <HTMLDivElement> document.getElementById("clock") 
 
 let raw:string ;
 let day:number;
@@ -14,8 +16,8 @@ let weekDay:string ;
 let timeZone:string;
 let timeString:string;
 
-
- export function hentDato():void
+//Function - Get
+export function hentDato():void
     {
     let result= axios.get(uri).then(function (response: AxiosResponse): void
     { 
@@ -37,15 +39,7 @@ let timeString:string;
     display.innerText=timeString;
     });
 
-
-
-   
-    
-    
-    
-
-
-
+//Function - Test
 function clockNewYearsEveTest():void
 {
     result= axios.get(uri).then(function (response: AxiosResponse): void
@@ -71,21 +65,22 @@ function clockNewYearsEveTest():void
     });
 }
 
+//Function - Tids korrektion
 function cetClockcorrection(h:number):void
-{if(hour>23)
-    {
-    hour=0;
-    hour
-    day=day+1;
-    if(weekDay=="Monday"){weekDay="Tuesday";}
-    else if(weekDay=="Tuesday"){weekDay="Wednesday";}
-    else if (weekDay=="Wednesday"){weekDay="Thursday";}
-    else if (weekDay=="Thursday"){weekDay="Friday";}
-    else if (weekDay=="Friday"){weekDay="Saturday";}
-    else if (weekDay=="Saturday"){weekDay="Sunday"}
-    else if (weekDay== "Sunday") {weekDay="Monday"}
-    if(day>31){day=1; month=month+1;}
-    if(month>12){month=1; year=year+1;}
+    {if(hour>23)
+        {
+        hour=0;
+        hour
+        day=day+1;
+        if(weekDay=="Monday"){weekDay="Tuesday";}
+        else if(weekDay=="Tuesday"){weekDay="Wednesday";}
+        else if (weekDay=="Wednesday"){weekDay="Thursday";}
+        else if (weekDay=="Thursday"){weekDay="Friday";}
+        else if (weekDay=="Friday"){weekDay="Saturday";}
+        else if (weekDay=="Saturday"){weekDay="Sunday"}
+        else if (weekDay== "Sunday") {weekDay="Monday"}
+        if(day>31){day=1; month=month+1;}
+        if(month>12){month=1; year=year+1;}
+        }
     }
-}
 }
