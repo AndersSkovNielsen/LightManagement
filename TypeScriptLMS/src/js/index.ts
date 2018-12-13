@@ -1,4 +1,3 @@
-
     import axios, 
     {
     AxiosResponse,
@@ -7,25 +6,15 @@
     import "./Login";
     import "./Bruger";
     import {hentDato} from "./Clock";
-    //import Bruger from "./Login";
-    
-   
-    
+    import {displayBrugernavn} from "./Login";
  
+    //REST URI
     let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
     let uri2: string = "https://ande-easj-rest.azurewebsites.net/api/sensor/";
-    import {displayBrugernavn} from "./Login";
-
     
-   
-
-
-    //Liste kode
+    //Element - Collapsible List
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
-    // let i: number;
-
-
-
+    let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
 
     for (let i: number = 0; i < elements.length; i++) 
     {
@@ -46,7 +35,7 @@
     });
     }
 
-    let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
+    //Element - Hent
     let elementById2: HTMLDivElement = <HTMLDivElement>document.getElementById("content2");
     let InputConverter: HTMLInputElement = <HTMLInputElement> document.getElementById("InputConverter");
 
@@ -94,7 +83,7 @@
         }
     }
 
-    //Indstillinger
+    //Sektion - Sensor Indstillinger
 
     interface Sensor {
     
@@ -103,6 +92,7 @@
         sensitivity: number;
     }
 
+    //Element - Hent
     let idbutton: HTMLInputElement = <HTMLInputElement> document.getElementById("IDButton");
     idbutton.addEventListener("click", HentSensor)
 
@@ -112,6 +102,7 @@
 
     let valgtSensor: Sensor = null;
 
+    //Button - Function
     function HentSensor():void
     {
         let idSensor: number = Number(sensorid.value);
@@ -131,6 +122,7 @@
     let downbutton: HTMLInputElement = <HTMLInputElement> document.getElementById("SenseDownButton");
     downbutton.addEventListener("click", SensivititetNed)
 
+    //Functions
     function SensivititetOp():void
     {
         valgtSensor.sensitivity = valgtSensor.sensitivity - 0.3;
@@ -161,7 +153,7 @@
             })
     }
 
-    //Side navigation
+    //Sektion - Side navigation
 
     let LoginSideButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("LoginSideButton");
     LoginSideButton.addEventListener("click", LoginSideKnap);
@@ -172,20 +164,20 @@
      window.location.href = "LoginSide.htm";
     }
 
-    let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
-    TilbageButton.addEventListener("click", HovedmenuKnap);
+    //let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
+    //TilbageButton.addEventListener("click", HovedmenuKnap);
 
-    function HovedmenuKnap(): void
-    {
-    console.log("Hovedmenu er kaldt")
-    window.location.href = "Hovedmenu.htm";
-    }
+    //function HovedmenuKnap(): void
+    //{
+    //console.log("Hovedmenu er kaldt")
+    //window.location.href = "Hovedmenu.htm";
+    //}
 
-    let settingsButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Settings");
-    settingsButton.addEventListener("click", SettingsKnap);
+    //let settingsButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Settings");
+    //settingsButton.addEventListener("click", SettingsKnap);
 
-    function SettingsKnap(): void
-    {
-    console.log("Indstillinger er kaldt")
-    window.location.href = "Indstillinger.htm";
-    }
+    //function SettingsKnap(): void
+    //{
+    //console.log("Indstillinger er kaldt")
+    //window.location.href = "Indstillinger.htm";
+    //}

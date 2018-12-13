@@ -8,33 +8,36 @@
 
 <body>
 
-  
-
+<!--Elementer til generel info-->
 <div id="clock">Åben listen for at vise tid og dato.</div>
 <div id="BrugerInfo"></div>
 
+<!--Knapper til side navigation-->
 <div id="navigation">
     <button id="LoginSideButton">Login</button>
-    <button id="Tilbage">Hovedmenu</button>
-    <button id="Settings">Indstillinger</button>
+    <!--<button id="Tilbage">Hovedmenu</button>
+    <button id="Settings">Indstillinger</button>-->
 </div>    
 
+<!--Boks til Bruger-->
 <div class="bruger">
   <h1>Bruger Administration</h1>
 
-  <!--skaber en collapsible med listen af Brugere --> 
+  <!--Collapsible List til Bruger (GetAll)--> 
   <button class="collapsible">Brugerliste</button>
   <div class="content">
     <div id="content1"></div>
   </div>  
   
-  <h2>Hent</h2> 
+  <!--Get via ID-->
+  <h2>Hent</h2>
+
   <input type="text"   id="InputConverter" placeholder= "ID for specific item.">
   <button id="GetIdButton" >input</button>
 
   <div id="content2"></div>
-  <output type="text" id="Output"></output>
 
+  <!--Post/Delete-->
   <h2>Tilføj/Fjern</h2>
 
   <p>
@@ -52,9 +55,11 @@
   </p>
 </div>
 
+<!--Boks til Sensor-->
 <div class="indstillinger">
   <h1>Sensor Indstillinger</h1>
   
+  <!--Get via ID-->
   <h2>Vælg sensor</h2> 
 
   <button id="IDButton">Hent</button> 
@@ -64,16 +69,13 @@
     <output type="text" id="SensorOutput"></output>
   </p>
 
+  <!--Justering af sensitivitet-->
   <button id="SenseUpButton">Sense (+)</button>
   <button id="SenseDownButton">Sense (-)</button>
 </div>
 
-  
-
 </body>
 
 <script src="bundle.js"></script>
-
-
 
 </html>

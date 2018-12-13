@@ -1,25 +1,22 @@
-//import axios, { AxiosPromise } from 'axios';
-import axios, 
-    {
-    AxiosResponse,
-    AxiosError
-    } from "../../node_modules/axios/index";
+import axios from "../../node_modules/axios/index";
 
+//REST URI
 let uri: string = "http://ande-easj-rest.azurewebsites.net/api/bruger/";
 
+//Output - Error Prevention
 let errorMessage: HTMLDivElement = <HTMLDivElement> document.getElementById("ErrorMessage");
 
-//Button references
+//Button - Variables
 let tilføjButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("TilføjButton");
 
 let fjernButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("FjernButton");
 
-//Button bindings
+//Button - Bindings
 tilføjButton.addEventListener("click", tilføjFunction)
 
 fjernButton.addEventListener("click", fjernFunction)
 
-//Button void functions
+//Button - Functions
 function tilføjFunction(): void{
 
   let tilføjID: HTMLInputElement = <HTMLInputElement> document.getElementById("TilføjID");
