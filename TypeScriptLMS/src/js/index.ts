@@ -6,12 +6,15 @@
     import "./Login";
     import "./Bruger";
     import {hentDato} from "./Clock";
-    import {displayBrugernavn} from "./Login";
+    import {getCookie} from "./cookie";
  
     //REST URI
     let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
     let uri2: string = "https://ande-easj-rest.azurewebsites.net/api/sensor/";
     
+    let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
+    BrugerInfo.innerHTML = getCookie("Bruger");
+
     //Element - Collapsible List
     let elements: HTMLCollectionOf<Element> = document.getElementsByClassName("collapsible");
     let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
@@ -22,7 +25,6 @@
     {
         console.log("click");
          hentDato();
-         displayBrugernavn();
         this.classList.toggle("active");
         var content: HTMLElement = this.nextElementSibling;
         if (content.style.maxHeight) 

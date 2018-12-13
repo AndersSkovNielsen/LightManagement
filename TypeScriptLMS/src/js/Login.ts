@@ -3,6 +3,8 @@ import axios,
 AxiosResponse,
 AxiosError
 } from "../../node_modules/axios/index";
+import {setCookie} from "./cookie";
+
 let Bruger: string;
 let uri: string = "https://ande-easj-rest.azurewebsites.net/api/bruger/";
 let elementById: HTMLDivElement = <HTMLDivElement>document.getElementById("content1");
@@ -12,14 +14,8 @@ let Kodeord: HTMLInputElement = <HTMLInputElement>document.getElementById("Login
 //export default Bruger;
 //eksperimental kode, kan slettes. gør intet.
 var responseHTML = document.createElement("body");
-let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
 
-export function displayBrugernavn(): void
-{
-    console.log(Bruger);
-    //Bruger = LoginNavn.value;
-    BrugerInfo.innerText = Bruger;
-}
+
 
 //let BrugerInfo: HTMLDivElement = <HTMLDivElement>document.getElementById("BrugerInfo");
 
@@ -77,8 +73,7 @@ function AxiosData (response:AxiosResponse):void
      console.log("Hovedmenu Funktion");
     sammenlign();
     
-    
-    Bruger = LoginNavn.value.toString();
+    setCookie("Bruger", LoginNavn.value);
 
     console.log("bool er:" + Sammenlign)
      if(Sammenlign == true)
