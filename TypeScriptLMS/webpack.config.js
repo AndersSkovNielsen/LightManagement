@@ -68,7 +68,7 @@ module.exports = {
       reload: true,
       port: 3000,
       files: ["*.htm", "*.html", "scss/*.*"],
-      index: 'index.htm',
+      index: 'LoginSide.htm',
       server: { baseDir: ['dist'] }
     })
   ]
