@@ -30,7 +30,7 @@ export function hentDato():void
     day=Number(raw.slice(9,11));
     hour=Number( raw.slice(12,14))+1;
     minute=Number(raw.slice(15,17))
-    weekDay= JSON.stringify( response.data.dayOfTheWeek);
+    weekDay= String(response.data.dayOfTheWeek) 
     timeZone=response.data.timeZoneName;
     cetClockcorrection(hour)
     timeString=weekDay +" "+  day + "/"+month+"/"+year+ " "+hour+":"+minute +" CET";
