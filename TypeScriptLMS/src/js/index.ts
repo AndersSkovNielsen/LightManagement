@@ -164,6 +164,8 @@
      window.location.href = "LoginSide.htm";
     }
 
+    //Uanvendt kode - Side navigation
+
     //let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
     //TilbageButton.addEventListener("click", HovedmenuKnap);
 
