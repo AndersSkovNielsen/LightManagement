@@ -166,6 +166,13 @@
      window.location.href = "LoginSide.htm";
     }
 
+    let BackButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("BackButton");
+    BackButton.addEventListener("click", BackButtonFunction);
+
+    function BackButtonFunction(): void
+    {
+     window.location.href = "index.htm";
+    }
     //Uanvendt kode - Side navigation
 
     //let TilbageButton:HTMLButtonElement=<HTMLButtonElement> document.getElementById("Tilbage");
