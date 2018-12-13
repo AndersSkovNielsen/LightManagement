@@ -134,7 +134,7 @@
             Sensitivity: valgtSensor.sensitivity
             }).then(function (response: AxiosResponse): void
             {
-                sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity;
+                sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity.toFixed(1);
             })
     }
 
@@ -149,7 +149,7 @@
             Sensitivity: valgtSensor.sensitivity
             }).then(function (response: AxiosResponse): void
             {
-                sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity;
+                sensoroutput.innerHTML = "ID: " + valgtSensor.id + " - Sensitivitetsniveau på: " + valgtSensor.sensitivity.toFixed(1);
             })
     }
 
