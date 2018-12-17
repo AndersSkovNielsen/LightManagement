@@ -1,0 +1,12 @@
+Opsætning af Light Management System prototype:
+
+1.
+Forbind til MGV2-DMU2 netværk og brug PuTTY software til at tilgå Raspberry Pi #23* (Login: pi | Password: raspberry)
+*Opbevares af Anders
+
+2.
+Opstart Proxy projekt i LightManagement.sln
+
+3.
+Åben Command Prompt og naviger til TypeScript projekt (cd ././TypeScriptLMS/src) og kør "npm run watch"
+

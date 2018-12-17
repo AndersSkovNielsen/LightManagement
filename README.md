@@ -1,3 +1,0 @@
-# EASJ3semProject
-
-TEST
